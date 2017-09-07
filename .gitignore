@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# binary files
+BounceBall\bin\
+
+# vs files
+.vs\
+/.vs/BounceBall/v15
+/.vs
+/BounceBall/bin/sfml
+/BounceBall/.vs/BounceBall/v15
