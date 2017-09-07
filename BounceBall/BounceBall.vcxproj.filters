@@ -71,5 +71,8 @@
     <ClInclude Include="include\UI\Textbox.hh">
       <Filter>헤더 파일\UI</Filter>
     </ClInclude>
+    <ClInclude Include="include\UI\Pannel.hh">
+      <Filter>헤더 파일\UI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

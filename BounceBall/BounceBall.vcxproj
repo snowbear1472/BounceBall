@@ -132,6 +132,7 @@
     <ClInclude Include="include\StateBase.hh" />
     <ClInclude Include="include\States\Main.hh" />
     <ClInclude Include="include\UI\Button.hh" />
+    <ClInclude Include="include\UI\Pannel.hh" />
     <ClInclude Include="include\UI\Textbox.hh" />
     <ClInclude Include="include\UI\Widget.hh" />
   </ItemGroup>
