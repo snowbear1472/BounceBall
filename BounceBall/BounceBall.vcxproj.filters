@@ -28,6 +28,9 @@
     <Filter Include="소스 파일\UI">
       <UniqueIdentifier>{10311540-25ed-4af1-8337-c8d1daaf0977}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Util">
+      <UniqueIdentifier>{7e4f1079-22a8-4d36-a46c-906273d312c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="include\UI\Pannel.hh">
       <Filter>헤더 파일\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util\Maths.hh">
+      <Filter>헤더 파일\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
