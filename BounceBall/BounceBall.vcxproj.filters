@@ -31,6 +31,12 @@
     <Filter Include="헤더 파일\Util">
       <UniqueIdentifier>{7e4f1079-22a8-4d36-a46c-906273d312c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Util">
+      <UniqueIdentifier>{e13c654c-a585-4b3c-b0e5-3c6d41f0e340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\States">
+      <UniqueIdentifier>{5d4ea8dd-b734-4eea-a368-f97cbb6dc70e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
@@ -48,6 +54,27 @@
     <ClCompile Include="include\UI\StackMenu.hh">
       <Filter>헤더 파일\UI</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\Button.cc">
+      <Filter>소스 파일\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\StackMenu.cc">
+      <Filter>소스 파일\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\Textbox.cc">
+      <Filter>소스 파일\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Util\FileUtil.cc">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FPSCounter.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\States\MainState.cc">
+      <Filter>소스 파일\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.hh">
@@ -61,9 +88,6 @@
     </ClInclude>
     <ClInclude Include="include\Manager\ResourceHolder.hh">
       <Filter>헤더 파일\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\States\Main.hh">
-      <Filter>헤더 파일\States</Filter>
     </ClInclude>
     <ClInclude Include="include\UI\Widget.hh">
       <Filter>헤더 파일\UI</Filter>
@@ -79,6 +103,18 @@
     </ClInclude>
     <ClInclude Include="include\Util\Maths.hh">
       <Filter>헤더 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FPSCounter.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util\FileUtil.hh">
+      <Filter>헤더 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Animation.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\States\MainState.hh">
+      <Filter>헤더 파일\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

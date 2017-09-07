@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "StateBase.hh"
+#include "FPSCounter.hh"
 
 
 namespace BounceBall
@@ -36,6 +37,7 @@ namespace BounceBall
 	private:
 		sf::RenderWindow window_;
 		std::vector<std::unique_ptr<StateBase>> states_;
+		FPSCounter counter_;
 
 		bool should_pop_ = false;
 	};

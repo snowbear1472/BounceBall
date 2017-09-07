@@ -8,10 +8,10 @@ namespace BounceBall
 
 	class StateBase
 	{
+	public:
 		StateBase( Game& game )
 			: game_( &game )
 		{}
-
 
 	public:
 		virtual void handle_event( sf::Event e ) = 0;

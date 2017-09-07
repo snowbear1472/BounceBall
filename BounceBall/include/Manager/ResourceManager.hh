@@ -18,9 +18,9 @@ namespace BounceBall
 			const Ty_& get( const std::string& name )
 			{
 				if ( res_.find( name ) != res_.end( ) )
-				{
-
-				}
+					return res_.at( name );
+				else
+					add( name );
 			}
 			void add( const std::string& name )
 			{
@@ -40,7 +40,7 @@ namespace BounceBall
 		private:
 			std::string get_fullpath( const std::string& name )
 			{
-				return dir + "\\" + name + "." + extension_;
+				return dir_ + "\\" + name + "." + extension_;
 			}
 
 		private:

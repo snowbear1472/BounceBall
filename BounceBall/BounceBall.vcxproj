@@ -120,21 +120,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\UI\StackMenu.hh" />
+    <ClCompile Include="src\Animation.cc" />
+    <ClCompile Include="src\FPSCounter.cc" />
     <ClCompile Include="src\Game.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\Manager\ResourceHolder.cc" />
+    <ClCompile Include="src\States\MainState.cc" />
+    <ClCompile Include="src\UI\Button.cc" />
+    <ClCompile Include="src\UI\StackMenu.cc" />
+    <ClCompile Include="src\UI\Textbox.cc" />
     <ClCompile Include="src\UI\Widget.cc" />
+    <ClCompile Include="src\Util\FileUtil.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Animation.hh" />
+    <ClInclude Include="include\FPSCounter.hh" />
     <ClInclude Include="include\Game.hh" />
     <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Manager\ResourceManager.hh" />
     <ClInclude Include="include\StateBase.hh" />
-    <ClInclude Include="include\States\Main.hh" />
+    <ClInclude Include="include\States\MainState.hh" />
     <ClInclude Include="include\UI\Button.hh" />
     <ClInclude Include="include\UI\Pannel.hh" />
     <ClInclude Include="include\UI\Textbox.hh" />
     <ClInclude Include="include\UI\Widget.hh" />
+    <ClInclude Include="include\Util\FileUtil.hh" />
     <ClInclude Include="include\Util\Maths.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -14,6 +14,7 @@ namespace BounceBall
 		class StackMenu
 		{
 		public:
+			StackMenu( );
 			StackMenu( const sf::RenderWindow& handle );
 			StackMenu( const sf::Vector2f& pos );
 			StackMenu( StackMenu&& other );
@@ -24,7 +25,7 @@ namespace BounceBall
 			StackMenu& operator=( StackMenu&& other );
 
 		public:
-			void add_widget( std::unique_ptr<Widget> );
+			void add_widget( std::unique_ptr<Widget> widget );
 
 			void handle_event( sf::Event e, const sf::RenderWindow& handle );
 			void render( sf::RenderTarget& handle );

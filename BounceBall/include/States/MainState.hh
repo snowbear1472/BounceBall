@@ -1,16 +1,17 @@
 #pragma once
 
 #include "StateBase.hh"
+#include "UI/StackMenu.hh"
 
 
 namespace BounceBall
 {
 	namespace States
 	{
-		class Main : public StateBase
+		class MainState : public StateBase
 		{
 		public:
-			Main( Game& game );
+			MainState( Game& game );
 
 		public:
 			void handle_event( sf::Event e ) override;
@@ -18,6 +19,9 @@ namespace BounceBall
 			void update( sf::Time delta_time ) override;
 			void fixed_update( sf::Time delta_time ) override;
 			void render( sf::RenderTarget& handle ) override;
+
+		private:
+			UI::StackMenu test_;
 		};
 	}
 }
