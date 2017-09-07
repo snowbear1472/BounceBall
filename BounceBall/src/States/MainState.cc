@@ -1,5 +1,4 @@
-#include "States\MainState.hh"
-#include "UI/StackMenu.hh"
+#include "States/MainState.hh"
 #include "Game.hh"
 
 

@@ -12,7 +12,10 @@ namespace BounceBall
 		class ResourceManager
 		{
 		public:
-			ResourceManager( const std::string& folder, const std::string& extension );
+			ResourceManager( const std::string& folder, const std::string& extension )
+				: dir_( "res/" + folder )
+				, extension_( extension )
+			{}
 
 		public:
 			const Ty_& get( const std::string& name )
@@ -40,7 +43,7 @@ namespace BounceBall
 		private:
 			std::string get_fullpath( const std::string& name )
 			{
-				return dir_ + "\\" + name + "." + extension_;
+				return dir_ + "/" + name + "." + extension_;
 			}
 
 		private:
