@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "EntityBase.hh"
 
 
@@ -21,6 +23,7 @@ namespace BounceBall
 			void render( sf::RenderTarget& handle ) override;
 
 		public:
+			void parse( const std::vector<std::string>& lines ) override;
 			void jump( );
 
 		public:

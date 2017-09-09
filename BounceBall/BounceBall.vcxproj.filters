@@ -52,6 +52,9 @@
     <Filter Include="헤더 파일\Map">
       <UniqueIdentifier>{63a8f622-65f5-47f3-b924-0684e5486dfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Map">
+      <UniqueIdentifier>{49a07ebd-16f3-4e7c-8171-874d7e8cb19a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
@@ -99,6 +102,9 @@
     <ClCompile Include="src\Map.cc">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Map\MapFile.cc">
+      <Filter>소스 파일\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.hh">
@@ -108,9 +114,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\Manager\ResourceManager.hh">
-      <Filter>헤더 파일\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Manager\ResourceHolder.hh">
       <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
     <ClInclude Include="include\UI\Widget.hh">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="include\Map\MapFile.hh">
       <Filter>헤더 파일\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Manager\ResourceHolder.hh">
+      <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -128,6 +128,7 @@
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\Manager\ResourceHolder.cc" />
     <ClCompile Include="src\Map.cc" />
+    <ClCompile Include="src\Map\MapFile.cc" />
     <ClCompile Include="src\States\MainState.cc" />
     <ClCompile Include="src\UI\Button.cc" />
     <ClCompile Include="src\UI\StackMenu.cc" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
+    <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Map\MapFile.hh" />
     <ClInclude Include="include\Object.hh" />
     <ClInclude Include="include\Collision.hh" />
@@ -144,7 +146,6 @@
     <ClInclude Include="include\Entities\Ball.hh" />
     <ClInclude Include="include\FPSCounter.hh" />
     <ClInclude Include="include\Game.hh" />
-    <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Manager\ResourceManager.hh" />
     <ClInclude Include="include\Map.hh" />
     <ClInclude Include="include\NonCopyable.hh" />

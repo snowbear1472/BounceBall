@@ -20,17 +20,9 @@ namespace BounceBall
 		Map( ) = default;
 
 	public:
-		void read_from_file( const std::string& path );
-		void read_from_string( const std::vector<std::string>& lines );
-
-	public:
 		void reset( );
 
 	public:
 		BounceBall::Map::MapFile map_file_;
-
-	public:
-		std::vector<Object> objects_;
-		std::vector<EntityBase> entities_;
 	};
 }
