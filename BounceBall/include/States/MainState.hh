@@ -19,9 +19,6 @@ namespace BounceBall
 			void update( sf::Time delta_time ) override;
 			void fixed_update( sf::Time delta_time ) override;
 			void render( sf::RenderTarget& handle ) override;
-
-		private:
-			UI::StackMenu test_;
 		};
 	}
 }

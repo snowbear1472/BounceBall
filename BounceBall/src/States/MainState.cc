@@ -8,7 +8,6 @@ namespace BounceBall
 	{
 		MainState::MainState( Game& game )
 			: StateBase( game )
-			, test_( game.get_window( ) )
 		{
 
 		}
