@@ -31,12 +31,9 @@
 *.out
 *.app
 
-# binary files
-BounceBall\bin\
-
-# vs files
-.vs\
+# visual studio edit
 /.vs/BounceBall/v15
 /.vs
-/BounceBall/bin/sfml
 /BounceBall/.vs/BounceBall/v15
+/BounceBall/bin/sfml
+/BounceBall/x64/Debug

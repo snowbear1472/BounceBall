@@ -1,5 +1,4 @@
 #include "UI/StackMenu.hh"
-#include "Manager/ResourceHolder.hh"
 
 
 namespace BounceBall
@@ -9,8 +8,6 @@ namespace BounceBall
 		constexpr int BASEY = 95;
 
 
-		StackMenu::StackMenu( )
-		{}
 		StackMenu::StackMenu( const sf::RenderWindow& handle )
 			: base_pos_( handle.getSize( ).x / 2, BASEY )
 			, base_size_( 300, 20 )

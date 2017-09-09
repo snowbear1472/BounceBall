@@ -10,7 +10,7 @@ namespace BounceBall
 			setCharacterSize( 20 );
 			setOutlineColor( sf::Color::Black );
 			setFillColor( sf::Color::White );
-			setFont( Manager::ResourceHolder::get( ).fonts_.get( "³ª´®¹Ù¸¥°íµñ" ) );
+			setFont( Manager::ResourceHolder::get( ).fonts.get( "³ª´®¹Ù¸¥°íµñ" ) );
 		}
 
 

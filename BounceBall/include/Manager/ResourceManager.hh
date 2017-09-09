@@ -20,23 +20,23 @@ namespace BounceBall
 		public:
 			const Ty_& get( const std::string& name )
 			{
-				if ( res_.find( name ) != res_.end( ) )
-					return res_.at( name );
-				else
+				if ( !( res_.find( name ) != res_.end( ) ) )
 					add( name );
+
+				return res_.at( name );
 			}
 			void add( const std::string& name )
 			{
 				Ty_ res;
 
 				if ( res.loadFromFile( get_fullpath( name ) ) )
-					res_[name] = res;
+					res_.insert( std::make_pair( name, res ) );
 				else
 				{
 					Ty_ fail;
 					fail.loadFromFile( get_fullpath( "error" ) );
 
-					res_[name] = fail;
+					res_.insert( std::make_pair( name, fail ) );
 				}
 			}
 
@@ -47,8 +47,8 @@ namespace BounceBall
 			}
 
 		private:
-			const std::string& dir_;
-			const std::string& extension_;
+			const std::string dir_;
+			const std::string extension_;
 
 			std::map<std::string, Ty_> res_;
 		};

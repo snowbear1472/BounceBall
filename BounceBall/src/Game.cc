@@ -5,9 +5,9 @@
 namespace BounceBall
 {
 	Game::Game( )
-		: window_( { 1280, 720 }, "BounceBall" )
+		: window_( sf::VideoMode( 1280, 720 ), "BounceBall" )
 	{
-		window_.setFramerateLimit( 1000 );
+		window_.setFramerateLimit( 120 );
 		push_state<States::MainState>( *this );
 	}
 
@@ -50,7 +50,7 @@ namespace BounceBall
 			window_.clear( );
 			state.render( window_ );
 			counter_.draw( window_ );
-			
+
 			window_.display( );
 
 

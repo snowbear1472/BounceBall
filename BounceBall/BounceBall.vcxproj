@@ -138,6 +138,8 @@
     <ClInclude Include="include\Game.hh" />
     <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Manager\ResourceManager.hh" />
+    <ClInclude Include="include\NonCopyable.hh" />
+    <ClInclude Include="include\NonMovable.hh" />
     <ClInclude Include="include\StateBase.hh" />
     <ClInclude Include="include\States\MainState.hh" />
     <ClInclude Include="include\UI\Button.hh" />

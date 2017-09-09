@@ -7,21 +7,22 @@
 #include <memory>
 
 #include "ResourceManager.hh"
+#include "NonCopyable.hh"
+#include "NonMovable.hh"
 
 
 namespace BounceBall
 {
 	namespace Manager
 	{
-		class ResourceHolder
+		class ResourceHolder : public NonCopyable, public NonMovable
 		{
 		public:
 			static ResourceHolder& get( );
 
-		public:
-			ResourceManager<sf::Font> fonts_;
-			ResourceManager<sf::Texture> textures_;
-			ResourceManager<sf::SoundBuffer> sounds_;
+			ResourceManager<sf::Font>           fonts;
+			ResourceManager<sf::Texture>        textures;
+			ResourceManager<sf::SoundBuffer>    soundBuffers;
 
 		private:
 			ResourceHolder( );

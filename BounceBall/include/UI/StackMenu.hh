@@ -5,16 +5,16 @@
 #include <memory>
 
 #include "Widget.hh"
+#include "NonCopyable.hh"
 
 
 namespace BounceBall
 {
 	namespace UI
 	{
-		class StackMenu
+		class StackMenu : public NonCopyable
 		{
 		public:
-			StackMenu( );
 			StackMenu( const sf::RenderWindow& handle );
 			StackMenu( const sf::Vector2f& pos );
 			StackMenu( StackMenu&& other );
