@@ -127,6 +127,7 @@
     <ClCompile Include="src\Game.cc" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\Manager\ResourceHolder.cc" />
+    <ClCompile Include="src\Map.cc" />
     <ClCompile Include="src\States\MainState.cc" />
     <ClCompile Include="src\UI\Button.cc" />
     <ClCompile Include="src\UI\StackMenu.cc" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
+    <ClInclude Include="include\Map\MapFile.hh" />
     <ClInclude Include="include\Object.hh" />
     <ClInclude Include="include\Collision.hh" />
     <ClInclude Include="include\EntityBase.hh" />

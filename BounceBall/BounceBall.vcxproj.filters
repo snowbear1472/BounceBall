@@ -49,6 +49,9 @@
     <Filter Include="소스 파일\Blocks">
       <UniqueIdentifier>{ffbea586-96cd-4203-9dce-9996f3348d53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Map">
+      <UniqueIdentifier>{63a8f622-65f5-47f3-b924-0684e5486dfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="src\Entities\Ball.cc">
       <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map.cc">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="include\Object.hh">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Map\MapFile.hh">
+      <Filter>헤더 파일\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
