@@ -37,6 +37,18 @@
     <Filter Include="소스 파일\States">
       <UniqueIdentifier>{5d4ea8dd-b734-4eea-a368-f97cbb6dc70e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Entities">
+      <UniqueIdentifier>{3b91ac15-0dd7-488c-b15a-542957fa60ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Entities">
+      <UniqueIdentifier>{bb6ddd26-f6eb-4a18-b696-0e7d36828ba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Blocks">
+      <UniqueIdentifier>{8129dcc4-f38d-4315-9374-71211169cde4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Blocks">
+      <UniqueIdentifier>{ffbea586-96cd-4203-9dce-9996f3348d53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
@@ -74,6 +86,12 @@
     </ClCompile>
     <ClCompile Include="src\States\MainState.cc">
       <Filter>소스 파일\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collision.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Ball.cc">
+      <Filter>소스 파일\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +138,27 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\NonMovable.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityBase.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collision.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util\Utility.hh">
+      <Filter>헤더 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Map.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\States\PlayingState.hh">
+      <Filter>헤더 파일\States</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Entities\Ball.hh">
+      <Filter>헤더 파일\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object.hh">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

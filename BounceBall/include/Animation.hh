@@ -23,6 +23,7 @@ namespace BounceBall
 
 
 	public:
+		Animation( ) = default;
 		Animation( size_t frame_size );
 
 	public:
