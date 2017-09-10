@@ -23,6 +23,6 @@ namespace BounceBall
 		void reset( );
 
 	public:
-		BounceBall::Map::MapFile map_file_;
+		BounceBall::MapFile map_file_;
 	};
 }

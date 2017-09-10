@@ -80,7 +80,7 @@ namespace BounceBall
 			}
 
 
-			if ( vers.size == 4 )
+			if ( vers.size( ) == 4 )
 			{
 				build_ = vers.top( );
 				vers.pop( );
@@ -152,6 +152,9 @@ namespace BounceBall
 // csv parser for mapfile class and others
 namespace BounceBall
 {
+	using csv_map = std::map<std::string, std::string>;
+
+
 	bool when( char c )
 	{
 		return ( std::isalpha( c ) || std::isdigit( c ) || c == ' ' || c == '_' || c != ',' );
@@ -204,6 +207,66 @@ namespace BounceBall
 
 		return buffer;
 	}
+
+
+	csv_map parse_csv( const std::vector<std::string>& lines, std::size_t& index )
+	{
+		csv_map buffer;
+		std::string sbuffer = "";
+		bool key = false;
+
+
+		for ( ; index < lines.size( ); index++ )
+		{
+			for ( int i = 0; i < lines[index].length( ); i++ )
+			{
+				auto& line = lines[index];
+				auto& c = line[i];
+
+
+				if ( std::isalpha( c ) ) // name, bounce_ball tutorial
+				{
+					if ( key )
+					{
+						buffer[sbuffer] = read_buffer( line, i );
+
+						key = false;
+						sbuffer = "";
+
+						continue;
+					}
+					else
+					{
+						sbuffer = read_buffer( line, i );
+
+						key = true;
+					}
+				}
+
+				if ( c == '(' ) // (3, 5), game:object:default_dirt
+				{
+					if ( key )
+					{
+						buffer[sbuffer] = read_buffer( line, i );
+
+						key = false;
+						sbuffer = "";
+
+						continue;
+					}
+					else
+					{
+						sbuffer = read_buffer_paren( line, i );
+
+						key = true;
+					}
+				}
+			}
+		}
+
+
+		return buffer;
+	}
 }
 
 
@@ -224,5 +287,8 @@ namespace BounceBall
 
 			line = "";
 		}
+
+
+		return lines;
 	}
 }

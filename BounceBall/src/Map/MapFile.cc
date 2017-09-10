@@ -4,109 +4,54 @@
 
 namespace BounceBall
 {
-	namespace Map
+	std::string&  MapFile::replace_tokens( std::string& line )
 	{
-		std::string&  MapFile::replace_tokens( std::string& line )
-		{
+		return line;
+	}
 
+
+	void MapFile::parse_from_file( const std::string& path )
+	{
+
+	}
+	void  MapFile::parse_from_string( string_lines lines )
+	{
+		/*
+			* 이곳에서 csv_map을 초기화 및 lines를 lexing합니다.
+			* 이곳에서는 lex한 csv_map에서 meta_data만 읽습니다.
+			* 이곳에서 meta_data를 통한 맵 읽기 버전을 추론합니다.
+			* meta_data 형식은 변하지 않습니다.
+		*/
+
+		std::size_t index = 0;
+		csv_map buffer = parse_csv( lines, index );
+
+
+		try
+		{
+			version_.parse( buffer["version"] );
+			map_version_.parse( buffer["map_version"] );
+			name_ = buffer["name"];
+			developer_ = buffer["developer"];
+			details_ = buffer["details"];
+		}
+		catch ( std::runtime_error )
+		{
+			throw std::runtime_error( error_messages_[ErrorType::META_DATA_WRONG] );
 		}
 
 
-		void MapFile::parse_from_file( const std::string& path )
+
+		if ( map_version_ == Version( 1, 0, 0, 0 ) )
+			parse_ver_1_0( buffer );
+	}
+
+
+	void MapFile::parse_ver_1_0( const csv_map& map )
+	{
+		for ( auto& i : map )
 		{
 
-		}
-		void  MapFile::parse_from_string( string_lines lines )
-		{
-			/*
-				* meta data만 parse합니다.
-				* 실제 map data는 meta data parse 한 후 이곳에서 맵파일 버전별로 처리됩니다.
-			*/
-
-
-			std::string buffer = "";
-			bool loop = true;
-			std::size_t index;
-
-
-			for ( int i = 0; i < lines.size; i++ )
-			{
-				for ( int j = 0; j < lines.at( i ).length; j++ )
-				{
-					auto& line = lines.at( i );
-					auto& c = line[j];
-
-
-					if ( std::isalpha( c ) )
-					{
-						buffer = read_buffer( line, j );
-
-						if ( buffer == "version" )
-							version_.parse( read_buffer( line, j ) );
-
-						else if ( buffer == "name" )
-							name_ = read_buffer( line, j );
-
-						else if ( buffer == "developer" )
-							developer_ = read_buffer( line, j );
-
-						else if ( buffer == "details" )
-							details_ = read_buffer( line, j );
-
-						else if ( buffer == "map_version" )
-							map_version_.parse( read_buffer( line, j ) );
-
-						else if ( buffer == "map_size" )
-							map_size_ = parse_vector2f( read_buffer( line, j ) );
-					}
-
-
-					buffer = "";
-				}
-
-				if ( !loop )
-				{
-					index = i + 1;
-					break;
-				}
-			}
-
-
-			if ( map_version_ == Version( 1, 0, 0, 0 ) )
-				parse_ver_1_0( lines, index );
-		}
-
-
-		void MapFile::parse_ver_1_0( const string_lines& lines, const std::size_t& index )
-		{
-			for ( int i = index; i < lines.size( ); i++ )
-			{
-				for ( int j = 0; j < lines[i].length( ); j++ )
-				{
-					auto& line = lines[i];
-					auto& c = line[j];
-
-
-					if ( c == '(' )
-					{
-						sf::Vector2f pos = parse_vector2f( read_buffer_paren( line, i ) );
-						IDType id = id_tokens_[read_buffer( line, i )];
-
-						if ( id == IDType::default_ball )
-						{
-							Entity::Ball ball;
-							ball.parse( read_file( "res/entities/default_ball.csv" ) );
-
-							entities_[pos] = ball;
-						}
-						else if ( id == IDType::default_block_dirt )
-						{
-
-						}
-
-					}
-				}
-			}
 		}
 	}
 }

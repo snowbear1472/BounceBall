@@ -1,43 +1,17 @@
 #include <iostream>
-
-#include "Game.hh"
-
-//class single
-//{
-//private:
-//	single( );
-//
-//public:
-//	int num;
-//
-//private:
-//	static single* instance_;
-//
-//public:
-//	static single& get( );
-//};
-//
-//
-//single::single( )
-//{
-//	num = 5;
-//}
-//
-//single* single::instance_ = nullptr;
-//
-//single& single::get( )
-//{
-//	if ( !instance_ )
-//		instance_ = new single;
-//
-//	return *instance_;
-//}
+#include "Util/Utility.hh"
 
 
 int main( )
 {
-	BounceBall::Game game;
-	game.run( );
+	std::size_t index = 0;
+	auto& csv = BounceBall::parse_csv( BounceBall::read_file( "res/entities/default_ball.csv" ), index );
+	for ( auto& i : csv )
+	{
+		std::cout << i.first << ": " << i.second << std::endl;
+	}
+
+	std::cin.get( );
 
 
 	return 0;
