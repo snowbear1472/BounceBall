@@ -16,7 +16,7 @@ int main( )
 	}
 
 	BounceBall::Entity::Ball ball;
-	ball.parse( csv );
+	ball.parse( &csv );
 
 	std::cin.get( );
 

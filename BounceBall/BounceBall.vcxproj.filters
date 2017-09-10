@@ -176,5 +176,8 @@
     <ClInclude Include="include\BounceBall.hh">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="include\Manager\GameFileManager.hh">
+      <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
     <ClInclude Include="include\BounceBall.hh" />
+    <ClInclude Include="include\Manager\GameFileManager.hh" />
     <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Map\MapFile.hh" />
     <ClInclude Include="include\Object.hh" />

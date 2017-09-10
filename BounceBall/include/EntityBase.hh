@@ -31,12 +31,10 @@ namespace BounceBall
 		{
 			shape_.setTexture( &texture_ );
 		}
-		virtual void parse( const std::vector<std::string>& lines )
-		{
+		virtual void parse( const string_lines* lines ) = 0;
+		virtual void parse( const csv_map* csv ) = 0;
 
-		}
-
-	private:
+	public:
 		StateBase* state_;
 
 	public:

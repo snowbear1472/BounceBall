@@ -68,7 +68,7 @@ namespace BounceBall
 	std::string read_buffer( const std::string& line, int& index, char con );
 	std::string read_buffer_paren( const std::string& line, int& index );
 
-	csv_map parse_csv( const std::vector<std::string>* file, std::size_t& index );
+	csv_map parse_csv( const string_lines* file, std::size_t& index );
 }
 
 

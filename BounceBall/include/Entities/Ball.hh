@@ -13,7 +13,6 @@ namespace BounceBall
 		{
 		public:
 			Ball( ) = default;
-			Ball( StateBase*& base );
 
 		public:
 			~Ball( );
@@ -26,8 +25,10 @@ namespace BounceBall
 			void render( sf::RenderTarget& handle ) override;
 
 		public:
-			void parse( const string_lines& lines ) override;
-			void parse( const csv_map& csv );
+			void init( );
+
+			void parse( const string_lines* lines ) override;
+			void parse( const csv_map* csv ) override;
 			void jump( );
 
 		public:
@@ -35,6 +36,9 @@ namespace BounceBall
 			float jump_save;
 
 			sf::Vector2f velocity_;
+
+		private:
+			csv_map* default_ball_;
 		};
 	}
 }

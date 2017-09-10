@@ -17,8 +17,8 @@ namespace BounceBall
 		enum class ErrorType
 		{
 			META_DATA_NOT_FOUND,
-			META_DATA_WRONG,
 
+			WRONG_FILE,
 			WRONG_ID,
 		};
 
@@ -26,8 +26,8 @@ namespace BounceBall
 		std::map<ErrorType, std::string> error_messages_
 		{
 			msg( ErrorType::META_DATA_NOT_FOUND, "can't find meta data from a map file!" ),
-			msg( ErrorType::META_DATA_WRONG, "wrong meta data!" ),
 
+			msg( ErrorType::WRONG_FILE, "wrong map file!" ),
 			msg( ErrorType::WRONG_ID, "can't find game_id from client or resources!" ),
 		};
 		#undef msg

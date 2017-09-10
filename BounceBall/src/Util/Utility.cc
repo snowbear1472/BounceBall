@@ -114,22 +114,35 @@ namespace BounceBall
 	{
 		sf::Vector2f vector;
 		std::string buffer = "";
+		bool charge = false;
+
 
 		for ( int i = 0; i < str.length( ); i++ )
 		{
 			auto& c = str[i];
 
-			if ( std::isdigit( c ) )
+
+			if ( std::isdigit( c ) || c == '(' )
 			{
-				do
+				while ( ( std::isdigit( str[i] ) || str[i] == ' ' || str[i] == '(' || str[i] == ')' ) && str[i] != ',' && i + 1 <= str.length( ) )
 					buffer += str[i++];
-				while ( str[i] != ',' || std::isdigit( str[i] ) );
 
-				vector.x = std::stoi( buffer );
+				if ( charge )
+				{
+					vector.y = std::stof( buffer );
+					break;
+				}
+				else
+				{
+					vector.x = std::stof( buffer );
 
-				buffer = "";
+					buffer = "";
+					charge = true;
+				}
+
 			}
 		}
+
 
 		return vector;
 	}
@@ -184,7 +197,7 @@ namespace BounceBall
 	}
 
 
-	csv_map parse_csv( const std::vector<std::string>* file, std::size_t& index )
+	csv_map parse_csv( const string_lines* file, std::size_t& index )
 	{
 		csv_map buffer;
 		std::string sbuffer = "";
