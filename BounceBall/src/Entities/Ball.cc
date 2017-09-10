@@ -5,7 +5,11 @@ namespace BounceBall
 {
 	namespace Entity
 	{
-		Ball::Ball( StateBase& base )
+		Ball::Ball( StateBase*& base )
+		{
+
+		}
+		Ball::~Ball( )
 		{
 
 		}
@@ -32,40 +36,23 @@ namespace BounceBall
 
 		}
 
-		void Ball::parse( const std::vector<std::string>& lines )
+		void Ball::parse( const string_lines& lines )
 		{
-			std::string buffer = "";
+			std::size_t index = 0;
+			auto& csv = parse_csv( &lines, index );
 
-
-			for ( int i = 0; i < lines.size( ); i++ )
+			parse( csv );
+		}
+		void Ball::parse( const csv_map& csv )
+		{
+			for ( auto& i : csv )
 			{
-				for ( int j = 0; j < lines[i].length( ); j++ )
-				{
-					auto& line = lines[i];
-					auto& c = line[j];
-
-
-					if ( std::isalpha( c ) )
-					{
-						buffer = read_buffer( line, j );
-
-						if ( buffer == "texture" )
-						{
-							buffer = read_buffer( line, j, '"' );
-							texture_ = Manager::ResourceHolder::get( ).textures.get( buffer );
-						}
-						else if ( buffer == "jump_limit" )
-						{
-							buffer = read_buffer( line, j );
-							jump_limit_ = std::stoi( buffer );
-						}
-						else if ( buffer == "velocity" )
-						{
-							buffer = read_buffer_paren( line, j );
-							velocity_ = parse_vector2f( buffer );
-						}
-					}
-				}
+				if ( i.first == "texture" )
+					texture_.loadFromFile( i.second );
+				else if ( i.first == "jump_limit" )
+					jump_limit_ = std::stoi( i.second );
+				else if ( i.first == "velocity" )
+					parse_vector2f( i.second );
 			}
 		}
 		void Ball::jump( )

@@ -13,7 +13,10 @@ namespace BounceBall
 		{
 		public:
 			Ball( ) = default;
-			Ball( StateBase& base );
+			Ball( StateBase*& base );
+
+		public:
+			~Ball( );
 
 		public:
 			void handle_event( sf::Event e ) override;
@@ -23,7 +26,8 @@ namespace BounceBall
 			void render( sf::RenderTarget& handle ) override;
 
 		public:
-			void parse( const std::vector<std::string>& lines ) override;
+			void parse( const string_lines& lines ) override;
+			void parse( const csv_map& csv );
 			void jump( );
 
 		public:

@@ -20,9 +20,6 @@ namespace BounceBall
 		{}
 
 	public:
-		virtual ~EntityBase( ) = 0;
-
-	public:
 		virtual void handle_event( sf::Event e ) = 0;
 		virtual void handle_input( ) = 0;
 		virtual void update( sf::Time delta_time ) = 0;

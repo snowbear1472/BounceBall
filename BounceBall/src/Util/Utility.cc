@@ -139,9 +139,6 @@ namespace BounceBall
 // csv parser for mapfile class and others
 namespace BounceBall
 {
-	using csv_map = std::map<std::string, std::string>;
-
-
 	bool when( char c )
 	{
 		return ( std::isalpha( c ) || std::isdigit( c ) || c == ' ' || c == '_' || c != ',' );
@@ -159,11 +156,8 @@ namespace BounceBall
 	{
 		std::string buffer = "";
 
-		do
-			buffer += line[++index];
-		while ( when( line[index] ) );
-
-		index--;
+		while ( when( line[index] ) && index + 1 <= line.length( ) )
+			buffer += line[index++];
 
 
 		return buffer;
@@ -172,11 +166,8 @@ namespace BounceBall
 	{
 		std::string buffer = "";
 
-		do
-			buffer += line[++index];
-		while ( when( line[index], con ) );
-
-		index--;
+		while ( when( line[index], con ) && index + 1 <= line.length( ) )
+			buffer += line[index++];
 
 
 		return buffer;
@@ -185,22 +176,21 @@ namespace BounceBall
 	{
 		std::string buffer = "";
 
-		do
-			buffer += line[++index];
-		while ( when_paren( line[index] ) );
-
-		index--;
+		while ( when_paren( line[index] ) && index + 1 <= line.length( ) )
+			buffer += line[index++];
 
 
 		return buffer;
 	}
 
 
-	csv_map parse_csv( const string_lines& lines, std::size_t& index )
+	csv_map parse_csv( const std::vector<std::string>* file, std::size_t& index )
 	{
 		csv_map buffer;
 		std::string sbuffer = "";
 		bool key = false;
+
+		auto& lines = *file;
 
 
 		for ( ; index < lines.size( ); index++ )
@@ -211,7 +201,7 @@ namespace BounceBall
 				auto& c = line[i];
 
 
-				if ( std::isalpha( c ) ) // name, bounce_ball tutorial
+				if ( std::isalpha( c ) || std::isdigit( c ) || c == '"' ) // name, bounce_ball tutorial
 				{
 					if ( key )
 					{
@@ -234,7 +224,8 @@ namespace BounceBall
 				{
 					if ( key )
 					{
-						buffer[sbuffer] = read_buffer( line, i );
+						i++;
+						buffer[sbuffer] = read_buffer_paren( line, i );
 
 						key = false;
 						sbuffer = "";
@@ -243,7 +234,7 @@ namespace BounceBall
 					}
 					else
 					{
-						sbuffer = read_buffer_paren( line, i );
+						sbuffer = read_buffer( line, i );
 
 						key = true;
 					}
@@ -261,7 +252,7 @@ namespace BounceBall
 {
 	string_lines read_file( const std::string& path )
 	{
-		std::vector<std::string> lines;
+		string_lines buffer;
 		std::string line = "";
 
 		std::ifstream stream( path );
@@ -270,12 +261,12 @@ namespace BounceBall
 		if ( stream.is_open( ) )
 		{
 			while ( std::getline( stream, line ) )
-				lines.push_back( line );
+				buffer.push_back( line );
 
 			line = "";
 		}
 
 
-		return lines;
+		return buffer;
 	}
 }

@@ -24,7 +24,7 @@ namespace BounceBall
 		*/
 
 		std::size_t index = 0;
-		csv_map buffer = parse_csv( lines, index );
+		csv_map buffer = parse_csv( &lines, index );
 
 
 		try
