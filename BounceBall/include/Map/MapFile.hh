@@ -11,8 +11,6 @@
 
 namespace BounceBall
 {
-	using string_lines = std::vector<std::string>;
-
 	class MapFile final
 	{
 	public:

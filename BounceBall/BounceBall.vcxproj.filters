@@ -84,9 +84,6 @@
     <ClCompile Include="src\Animation.cc">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Util\FileUtil.cc">
-      <Filter>소스 파일\Util</Filter>
-    </ClCompile>
     <ClCompile Include="src\FPSCounter.cc">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -104,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="src\Map\MapFile.cc">
       <Filter>소스 파일\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Util\Utility.cc">
+      <Filter>소스 파일\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,9 +133,6 @@
     </ClInclude>
     <ClInclude Include="include\FPSCounter.hh">
       <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Util\FileUtil.hh">
-      <Filter>헤더 파일\Util</Filter>
     </ClInclude>
     <ClInclude Include="include\Animation.hh">
       <Filter>헤더 파일</Filter>
@@ -175,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="include\Manager\ResourceHolder.hh">
       <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BounceBall.hh">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

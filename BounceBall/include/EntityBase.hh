@@ -2,6 +2,7 @@
 
 #include <cctype>
 
+#include "StateBase.hh"
 #include "Animation.hh"
 #include "Collision.hh"
 #include "Util/Utility.hh"
@@ -10,8 +11,6 @@
 
 namespace BounceBall
 {
-	class StateBase;
-
 	class EntityBase
 	{
 	public:
@@ -37,29 +36,7 @@ namespace BounceBall
 		}
 		virtual void parse( const std::vector<std::string>& lines )
 		{
-			std::string buffer = "";
 
-
-			for ( int i = 0; i < lines.size( ); i++ )
-			{
-				for ( int j = 0; j < lines[i].length( ); j++ )
-				{
-					auto& line = lines[i];
-					auto& c = line[j];
-
-
-					if ( std::isalpha( c ) )
-					{
-						buffer = read_buffer( line, j );
-
-						if ( buffer == "texture" )
-						{
-							buffer = read_buffer( line, j, '"' );
-							texture_ = Manager::ResourceHolder::get( ).textures.get( buffer );
-						}
-					}
-				}
-			}
 		}
 
 	private:

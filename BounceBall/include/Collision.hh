@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include <map>
 
 
 namespace BounceBall

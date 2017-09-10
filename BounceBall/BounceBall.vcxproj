@@ -134,10 +134,11 @@
     <ClCompile Include="src\UI\StackMenu.cc" />
     <ClCompile Include="src\UI\Textbox.cc" />
     <ClCompile Include="src\UI\Widget.cc" />
-    <ClCompile Include="src\Util\FileUtil.cc" />
+    <ClCompile Include="src\Util\Utility.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
+    <ClInclude Include="include\BounceBall.hh" />
     <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Map\MapFile.hh" />
     <ClInclude Include="include\Object.hh" />
@@ -157,7 +158,6 @@
     <ClInclude Include="include\UI\Pannel.hh" />
     <ClInclude Include="include\UI\Textbox.hh" />
     <ClInclude Include="include\UI\Widget.hh" />
-    <ClInclude Include="include\Util\FileUtil.hh" />
     <ClInclude Include="include\Util\Maths.hh" />
     <ClInclude Include="include\Util\Utility.hh" />
   </ItemGroup>
