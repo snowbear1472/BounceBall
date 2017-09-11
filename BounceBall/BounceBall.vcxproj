@@ -121,11 +121,13 @@
   <ItemGroup>
     <ClCompile Include="include\UI\StackMenu.hh" />
     <ClCompile Include="src\Animation.cc" />
+    <ClCompile Include="src\Blocks\Block.cpp" />
     <ClCompile Include="src\Collision.cc" />
     <ClCompile Include="src\Entities\Ball.cc" />
     <ClCompile Include="src\FPSCounter.cc" />
     <ClCompile Include="src\Game.cc" />
     <ClCompile Include="src\main.cc" />
+    <ClCompile Include="src\Manager\GameFileManager.cc" />
     <ClCompile Include="src\Manager\ResourceHolder.cc" />
     <ClCompile Include="src\Map.cc" />
     <ClCompile Include="src\Map\MapFile.cc" />
@@ -138,7 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
+    <ClInclude Include="include\Blocks\Block.hh" />
     <ClInclude Include="include\BounceBall.hh" />
+    <ClInclude Include="include\Entities\Player.hh" />
     <ClInclude Include="include\Manager\GameFileManager.hh" />
     <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\Map\MapFile.hh" />

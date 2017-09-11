@@ -146,6 +146,18 @@ namespace BounceBall
 
 		return vector;
 	}
+	bool is_vector2f_str( const std::string& str )
+	{
+		if ( *str.begin( ) == '(' && *str.end( ) == ')' )
+			return true;
+		else
+			return false;
+	}
+
+	sf::Vector2i to_vector2i( const sf::Vector2f vec )
+	{
+		return sf::Vector2i( int( vec.x ), int( vec.y ) );
+	}
 }
 
 
@@ -200,8 +212,7 @@ namespace BounceBall
 	csv_map parse_csv( const string_lines* file, std::size_t& index )
 	{
 		csv_map buffer;
-		std::string sbuffer = "";
-		bool key = false;
+		std::vector<std::string> vbuffer;
 
 		auto& lines = *file;
 
@@ -214,49 +225,27 @@ namespace BounceBall
 				auto& c = line[i];
 
 
-				if ( std::isalpha( c ) || std::isdigit( c ) || c == '"' ) // name, bounce_ball tutorial
-				{
-					if ( key )
-					{
-						buffer[sbuffer] = read_buffer( line, i );
-
-						key = false;
-						sbuffer = "";
-
-						continue;
-					}
-					else
-					{
-						sbuffer = read_buffer( line, i );
-
-						key = true;
-					}
-				}
-
-				if ( c == '(' ) // (3, 5), game:object:default_dirt
-				{
-					if ( key )
-					{
-						i++;
-						buffer[sbuffer] = read_buffer_paren( line, i );
-
-						key = false;
-						sbuffer = "";
-
-						continue;
-					}
-					else
-					{
-						sbuffer = read_buffer( line, i );
-
-						key = true;
-					}
-				}
+				if ( std::isalpha( c ) || std::isdigit( c ) )
+					vbuffer.push_back( read_buffer( line, i ) );
+				else if ( c == '(' )
+					vbuffer.push_back( read_buffer_paren( line, i ) );
 			}
 		}
 
 
 		return buffer;
+	}
+	const std::string* csv_find( const csv_map* csv, const std::string& name )
+	{
+		auto& v = *csv;
+
+		for ( int i = 0; i < v.size( ); i++ )
+			for ( int j = 0; j < v[i].size( ); j++ )
+				if ( v[i][j] == name )
+					return &v[i][j];
+
+
+		return nullptr;
 	}
 }
 

@@ -20,6 +20,7 @@ namespace BounceBall
 		Map( ) = default;
 
 	public:
+		void init( );
 		void reset( );
 
 	public:

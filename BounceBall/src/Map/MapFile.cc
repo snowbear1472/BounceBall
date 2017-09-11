@@ -1,9 +1,21 @@
 #include "Map/MapFile.hh"
 
 #include "Entities/Ball.hh"
+#include "Blocks/Block.hh"
+#include "Manager/GameFileManager.hh"
 
 namespace BounceBall
 {
+	MapFile::~MapFile( )
+	{
+		for ( auto& e : entities_ )
+			delete e.second;
+
+		for ( auto& o : objects_ )
+			delete o.second;
+	}
+
+
 	std::string&  MapFile::replace_tokens( std::string& line )
 	{
 		return line;
@@ -25,6 +37,7 @@ namespace BounceBall
 
 		std::size_t index = 0;
 		csv_map buffer;
+		const std::string* pbuffer;
 
 		try
 		{
@@ -37,11 +50,30 @@ namespace BounceBall
 
 		try
 		{
-			version_.parse( buffer["version"] );
-			map_version_.parse( buffer["map_version"] );
-			name_ = buffer["name"];
-			developer_ = buffer["developer"];
-			details_ = buffer["details"];
+			// data_type, game:map
+			pbuffer = csv_find( &buffer, "data_type" );
+			if ( *( ++pbuffer ) != "game:map" )
+				throw std::runtime_error( error_messages_[ErrorType::WRONG_FILE] );
+
+			// version, 1.0.0.0
+			pbuffer = csv_find( &buffer, "version" );
+			version_.parse( *( ++pbuffer ) );
+
+			// map_version, 1.0.0.0
+			pbuffer = csv_find( &buffer, "map_version" );
+			map_version_.parse( *( ++pbuffer ) );
+
+			// name
+			pbuffer = csv_find( &buffer, "name" );
+			name_ = *( ++pbuffer );
+
+			// developer
+			pbuffer = csv_find( &buffer, "developer" );
+			developer_ = *( ++pbuffer );
+
+			// details
+			pbuffer = csv_find( &buffer, "details" );
+			details_ = *( ++pbuffer );
 		}
 		catch ( std::runtime_error )
 		{
@@ -50,52 +82,63 @@ namespace BounceBall
 
 
 		if ( map_version_ == Version( 1, 0, 0, 0 ) )
-			parse_ver_1_0( buffer );
+			parse_ver_1_0( &buffer );
 	}
 
 
-	void MapFile::parse_ver_1_0( const csv_map& map )
+	void MapFile::parse_ver_1_0( const csv_map* csv )
 	{
-		bool charge = false;
-
 		sf::Vector2f vbuffer;
-		std::string sbuffer = "";
+		void* pbuffer = nullptr;
 
-		for ( auto& i : map )
+
+		for ( auto& i : *csv )
 		{
-			auto& key = i.first;
-			auto& val = i.second;
-
-
-			if ( *key.begin( ) == '(' && *key.end( ) == ')' ) // (5, 4)
+			for ( int j = 0; j < i.size( ); j++ )
 			{
-				vbuffer = parse_vector2f( i.first );
+				auto& val = i[j];
 
-				switch ( id_tokens_[val] )
+
+				if ( val == "map_size" )
+					map_size_ = parse_vector2f( i[++j] );
+
+
+				if ( *val.begin( ) == '(' && *val.end( ) == ')' )
 				{
-				case BounceBall::MapFile::IDType::object:
-					// ignore
-					break;
+					vbuffer = parse_vector2f( i[j++] );
 
-				case BounceBall::MapFile::IDType::entity:
-					//ignore
-					break;
+					auto& token = id_tokens_[i[++j]];
+					switch ( token )
+					{
+					case BounceBall::MapFile::IDType::object:
+						// ignore
+						break;
 
-				case BounceBall::MapFile::IDType::default_ball:
-					Entity::Ball ball;
-					ball.parse( )
+					case BounceBall::MapFile::IDType::entity:
+						// ignore
+						break;
 
-					break;
-				case BounceBall::MapFile::IDType::default_block_dirt:
-					break;
-				case BounceBall::MapFile::IDType::default_block_potal:
-					break;
-				case BounceBall::MapFile::IDType::resources_object:
-					break;
-				case BounceBall::MapFile::IDType::resources_entity:
-					break;
-				default:
-					break;
+					case BounceBall::MapFile::IDType::default_ball:
+						//entities_[vbuffer] = static_cast<Entity::Ball*>( Manager::GameFileManager::get( ).get_entity( "default_ball" ) );
+						break;
+
+					case BounceBall::MapFile::IDType::default_block_dirt:
+						//objects_[vbuffer] = *( dynamic_cast<Blocks::Block*>( Manager::GameFileManager::get( ).get_object( "default_dirt" ).get( ) ) );
+						break;
+
+					case BounceBall::MapFile::IDType::default_block_potal:
+						break;
+
+					case BounceBall::MapFile::IDType::resources_object:
+						//objects_[vbuffer] = static_cast<Object*>( Manager::GameFileManager::get( ).get_object( i[++j] ) );
+						break;
+
+					case BounceBall::MapFile::IDType::resources_entity:
+						break;
+
+					default:
+						break;
+					}
 				}
 			}
 		}

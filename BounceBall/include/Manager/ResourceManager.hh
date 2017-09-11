@@ -40,7 +40,7 @@ namespace BounceBall
 				}
 			}
 
-		private:
+		public:
 			std::string get_fullpath( const std::string& name )
 			{
 				return dir_ + "/" + name + "." + extension_;

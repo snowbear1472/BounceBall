@@ -105,6 +105,12 @@
     <ClCompile Include="src\Util\Utility.cc">
       <Filter>소스 파일\Util</Filter>
     </ClCompile>
+    <ClCompile Include="src\Manager\GameFileManager.cc">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Blocks\Block.cpp">
+      <Filter>소스 파일\Blocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.hh">
@@ -178,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="include\Manager\GameFileManager.hh">
       <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Blocks\Block.hh">
+      <Filter>헤더 파일\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Entities\Player.hh">
+      <Filter>헤더 파일\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

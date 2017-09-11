@@ -15,27 +15,26 @@ namespace BounceBall
 	{
 	public:
 		EntityBase( ) = default;
-		EntityBase( StateBase*& state )
-			: state_( state )
-		{}
 
 	public:
 		virtual void handle_event( sf::Event e ) = 0;
 		virtual void handle_input( ) = 0;
 		virtual void update( sf::Time delta_time ) = 0;
 		virtual void fixed_update( sf::Time delta_time ) = 0;
-		virtual void render( sf::RenderTarget& handle ) = 0;
+		virtual void render( StateBase*& handle ) = 0;
 
 	public:
 		virtual void init( )
 		{
 			shape_.setTexture( &texture_ );
 		}
+
+	public:
 		virtual void parse( const string_lines* lines ) = 0;
 		virtual void parse( const csv_map* csv ) = 0;
 
 	public:
-		StateBase* state_;
+		std::string entity_name_;
 
 	public:
 		sf::RectangleShape shape_;

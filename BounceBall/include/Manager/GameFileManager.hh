@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Util/Utility.hh"
+#include "EntityBase.hh"
+#include "Object.hh"
 
 
 namespace BounceBall
@@ -10,11 +12,30 @@ namespace BounceBall
 		class GameFileManager final
 		{
 		public:
-			GameFileManager( ) = default;
+			enum class Type
+			{
+				entity,
+				object
+			};
 
 		public:
-			string_lines get( const std::string& path );
-			csv_map get( const string_lines* lines );
+			static GameFileManager& get( );
+
+		private:
+			GameFileManager( );
+
+		public:
+			csv_map get( const std::string& name, const Type& type );
+			EntityBase* get_entity( const std::string& name );
+			Object* get_object( const std::string& name );
+
+		private:
+			path get_fullpath( const std::string& name, const Type& type );
+
+		public:
+			std::string dir_entity_;
+			std::string dir_object_;
+			std::string extension_;
 		};
 	}
 }

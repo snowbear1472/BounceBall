@@ -33,8 +33,8 @@ namespace BounceBall
 		sf::Clock timer_;
 		std::vector<Frame> frames_;
 
-	private:
+	public:
 		size_t frame_pointer_ = 0;
-		const size_t frame_size_;
+		size_t frame_size_;
 	};
 }

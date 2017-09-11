@@ -9,6 +9,12 @@
 #include <fstream>
 
 
+// for all class
+namespace BounceBall
+{
+	using path = const std::string;
+}
+
 // operator for sf::Vector2f
 namespace BounceBall
 {
@@ -50,13 +56,16 @@ namespace BounceBall
 namespace BounceBall
 {
 	sf::Vector2f parse_vector2f( const std::string& str );
+	bool is_vector2f_str( const std::string& str );
+
+	sf::Vector2i to_vector2i( const sf::Vector2f vec );
 }
 
 
 // csv parser for mapfile class and others
 namespace BounceBall
 {
-	using csv_map = std::map<std::string, std::string>;
+	using csv_map = std::vector<std::vector<std::string>>;
 	using string_lines = std::vector<std::string>;
 
 
@@ -69,6 +78,7 @@ namespace BounceBall
 	std::string read_buffer_paren( const std::string& line, int& index );
 
 	csv_map parse_csv( const string_lines* file, std::size_t& index );
+	const std::string* csv_find( const csv_map* csv, const std::string& name );
 }
 
 

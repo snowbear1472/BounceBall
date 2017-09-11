@@ -1,21 +1,12 @@
 #include "Entities/Ball.hh"
+#include "Manager/GameFileManager.hh"
+#include <string>
 
 
 namespace BounceBall
 {
 	namespace Entity
 	{
-		Ball::Ball( StateBase*& base )
-			: EntityBase( base )
-		{
-			init( );
-		}
-		Ball::~Ball( )
-		{
-
-		}
-
-
 		void Ball::handle_event( sf::Event e )
 		{
 
@@ -32,7 +23,7 @@ namespace BounceBall
 		{
 
 		}
-		void Ball::render( sf::RenderTarget& handle )
+		void Ball::render( StateBase*& handle )
 		{
 
 		}
@@ -53,12 +44,51 @@ namespace BounceBall
 		{
 			for ( auto& i : *csv )
 			{
-				if ( i.first == "texture" )
-					texture_.loadFromFile( i.second );
-				else if ( i.first == "jump_limit" )
-					jump_limit_ = std::stoi( i.second );
-				else if ( i.first == "velocity" )
-					velocity_ = parse_vector2f( i.second );
+				for ( int j = 0; j < i.size( ); j++ )
+				{
+					auto& val = i[j];
+
+					if ( val == "data_type" )
+					{
+						if ( i[++j] != "bounceball:entity" )
+							throw std::runtime_error( "script type is not bounceball_script!" );
+					}
+					else if ( val == "data_type" )
+					{
+						if ( i[++j] != "game:entity:ball" )
+							throw std::runtime_error( "data type is not game:entity:ball!" );
+					}
+					else if ( val == "entity_name" )
+						entity_name_ = i[++j];
+					else if ( val == "velocity" )
+						velocity_ = parse_vector2f( i[++j] );
+					else if ( val == "radius" )
+						radius_ = std::stof( i[++j] );
+					else if ( val == "texture" )
+					{
+						texture_ = Manager::ResourceHolder::get( ).textures.get( i[++j] );
+						shape_.setTexture( &texture_ );
+
+						if ( is_vector2f_str( i[j + 1] ) && is_vector2f_str( i[j + 2] ) )
+						{
+							auto& pos_ = to_vector2i( parse_vector2f( i[++j] ) );
+							auto& size_ = to_vector2i( parse_vector2f( i[++j] ) );
+
+							shape_.setTextureRect( { pos_, size_ } );
+						}
+					}
+					else if ( val == "animation" )
+					{
+						animation_->frame_size_ = std::stoi( i[++j] );
+
+						std::size_t index = 0;
+
+						while ( j < i.size( ) )
+							animation_->add_frame( index++, sf::Time( sf::milliseconds( std::stof( i[++j] ) ) ) );
+					}
+					else if ( val == "jump_limit" )
+						jump_limit_ = std::stof( i[++j] );
+				}
 			}
 		}
 

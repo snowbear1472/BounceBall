@@ -65,11 +65,18 @@ namespace BounceBall
 		MapFile( ) = default;
 
 	public:
+		~MapFile( );
+
+	public:
+		void init( );
+		void reset( );
+
+	public:
 		void parse_from_file( const std::string& path );
 		void parse_from_string( const string_lines lines );
 
 	private:
-		void parse_ver_1_0( const csv_map& map );
+		void parse_ver_1_0( const csv_map* csv );
 
 	private:
 		std::string& replace_tokens( std::string& line );
@@ -86,7 +93,10 @@ namespace BounceBall
 
 	public:
 		sf::Vector2f map_size_;
-		std::map<sf::Vector2f, Object> objects_;
-		std::map<sf::Vector2f, EntityBase> entities_;
+		std::map<sf::Vector2f, Object*> objects_;
+		std::map<sf::Vector2f, EntityBase*> entities_;
+
+	private:
+		csv_map* default_map_;
 	};
 }
