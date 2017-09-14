@@ -43,17 +43,17 @@
     <Filter Include="헤더 파일\Entities">
       <UniqueIdentifier>{bb6ddd26-f6eb-4a18-b696-0e7d36828ba6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Blocks">
-      <UniqueIdentifier>{8129dcc4-f38d-4315-9374-71211169cde4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Blocks">
-      <UniqueIdentifier>{ffbea586-96cd-4203-9dce-9996f3348d53}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Map">
       <UniqueIdentifier>{63a8f622-65f5-47f3-b924-0684e5486dfd}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\Map">
       <UniqueIdentifier>{49a07ebd-16f3-4e7c-8171-874d7e8cb19a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Objects">
+      <UniqueIdentifier>{8129dcc4-f38d-4315-9374-71211169cde4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Objects">
+      <UniqueIdentifier>{ffbea586-96cd-4203-9dce-9996f3348d53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,8 +108,14 @@
     <ClCompile Include="src\Manager\GameFileManager.cc">
       <Filter>소스 파일\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\Blocks\Block.cpp">
-      <Filter>소스 파일\Blocks</Filter>
+    <ClCompile Include="src\Entities\Player.cc">
+      <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Block.cpp">
+      <Filter>소스 파일\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +158,6 @@
     <ClInclude Include="include\NonMovable.hh">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\EntityBase.hh">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="include\Collision.hh">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -185,11 +188,17 @@
     <ClInclude Include="include\Manager\GameFileManager.hh">
       <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="include\Blocks\Block.hh">
-      <Filter>헤더 파일\Blocks</Filter>
-    </ClInclude>
     <ClInclude Include="include\Entities\Player.hh">
       <Filter>헤더 파일\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ParseBase.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Entity.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Objects\Block.hh">
+      <Filter>헤더 파일\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,13 +24,18 @@ namespace BounceBall
 
 		return { real.x + size.x, real.y + size.y };
 	}
+	bool Collision::is_collision( const Collision& col ) const
+	{
+		return ( collisions_.at( CollisionType::up ) || collisions_.at( CollisionType::down ) ||
+			collisions_.at( CollisionType::left ) || collisions_.at( CollisionType::right ) );
+	}
 
 	void Collision::update( const Collision& col )
 	{
 		/* 출동 판정 방식은 다음과 같습니다.
-			* 좌표에는 음수가 존재하지 않습니다.
-			* 좌표는 위에서 아래로 왼쪽에서 오른쪽으로 증가합니다.
-			* 모든 entity는 origin이 entity의 center로 자동 설정됩니다.
+		* 좌표에는 음수가 존재하지 않습니다.
+		* 좌표는 위에서 아래로 왼쪽에서 오른쪽으로 증가합니다.
+		* 모든 entity는 origin이 entity의 center로 자동 설정됩니다.
 		*/
 
 
@@ -53,10 +58,5 @@ namespace BounceBall
 		collisions_[CollisionType::left] = left;
 		collisions_[CollisionType::right] = right;
 
-	}
-	bool Collision::isCollision( const Collision& col ) const
-	{
-		return ( collisions_.at( CollisionType::up ) || collisions_.at( CollisionType::down ) ||
-			collisions_.at( CollisionType::left ) || collisions_.at( CollisionType::right ) );
 	}
 }

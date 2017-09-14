@@ -7,6 +7,8 @@
 #include <cctype>
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <memory>
 
 
 // for all class
@@ -38,6 +40,9 @@ namespace BounceBall
 
 	public:
 		void parse( const std::string& ver );
+
+	public:
+		std::string to_string( ) const;
 
 	public:
 		std::size_t major_;

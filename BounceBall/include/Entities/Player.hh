@@ -1,13 +1,13 @@
 #pragma once
 
-#include "EntityBase.hh"
+#include "Entity.hh"
 
 
 namespace BounceBall
 {
 	namespace Entity
 	{
-		class Player : public EntityBase
+		class Player : public Entity
 		{
 		public:
 			enum class MoveKeyType
@@ -15,6 +15,9 @@ namespace BounceBall
 				wasd,
 				updownleftright
 			};
+			using keys = std::vector<MoveKeyType>;
+
+		public:
 			enum class MoveDirectionType
 			{
 				up,
@@ -23,7 +26,7 @@ namespace BounceBall
 				left,
 				right
 			};
-			using directions = std::vector<MoveDirectionType>;
+			using moves = std::vector<MoveDirectionType>;
 
 		public:
 			Player( ) = default;
@@ -36,22 +39,32 @@ namespace BounceBall
 			virtual void render( StateBase*& handle ) override;
 
 		public:
-			virtual directions get_directions( ) const;
+			virtual const Version recommend_parse_version( ) const override;
+			virtual std::string& replace_token( std::string& line ) override;
 
 		public:
-			virtual void move( directions direction );
-			virtual void reset( );
-
-		public:
-			void init( ) override;
-
-		public:
+			virtual void parse( path& file ) override;
 			virtual void parse( const string_lines* lines ) override;
 			virtual void parse( const csv_map* csv ) override;
 
 		public:
-			Player* default_player_;
+			virtual void init( ) override;
+			virtual void reset( );
+
+		public:
+			virtual moves get_directions( ) const;
+
+		public:
+			virtual void move( const moves& direction );
+
+		public:
+			sf::Vector2f velocity_;
 			MoveKeyType key_type_;
 		};
+
+
+		using PlayerPtr = std::shared_ptr<Player>;
+
+		PlayerPtr make_player( );
 	}
 }

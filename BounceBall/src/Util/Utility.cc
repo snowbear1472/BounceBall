@@ -93,6 +93,12 @@ namespace BounceBall
 			std::runtime_error( "can't parse version!" );
 	}
 
+	std::string Version::to_string( ) const
+	{
+		return std::to_string( major_ ) + '.' + std::to_string( minor_ ) + '.'
+			+ std::to_string( revision_ ) + '.' + std::to_string( build_ );
+	}
+
 	bool Version::operator==( const Version& rhs )
 	{
 		return ( major_ == rhs.major_

@@ -15,37 +15,44 @@ namespace BounceBall
 			Ball( ) = default;
 
 		public:
-			void handle_event( sf::Event e ) override;
-			void handle_input( ) override;
-			void update( sf::Time delta_time ) override;
-			void fixed_update( sf::Time delta_time ) override;
-			void render( StateBase*& handle ) override;
+			virtual void handle_event( sf::Event e ) override;
+			virtual void handle_input( ) override;
+			virtual void update( sf::Time delta_time ) override;
+			virtual void fixed_update( sf::Time delta_time ) override;
+			virtual void render( StateBase*& handle ) override;
 
 		public:
-			directions get_directions( ) const override;
+			virtual const Version recommend_parse_version( ) const override;
+			virtual std::string& replace_token( std::string& line ) override;
 
 		public:
-			void move( directions direction ) override;
+			virtual void parse( path& file ) override;
+			virtual void parse( const string_lines* lines ) override;
+			virtual void parse( const csv_map* csv ) override;
+
+		public:
+			virtual void init( ) override;
+			virtual void reset( ) override;
+
+		public:
+			virtual moves get_directions( ) const override;
+
+		public:
+			virtual void move( const moves& direction ) override;
 			void jump( );
-			void reset( ) override;
-
-		public:
-			void init( );
-
-		public:
-			void parse( const string_lines* lines ) override;
-			void parse( const csv_map* csv ) override;
 
 		public:
 			float jump_limit_;
-			float jump_save;
-
-			sf::Vector2f velocity_;
-
+			float jump_save_;
 			float radius_;
 
 		private:
 			csv_map* default_ball_;
 		};
+		
+
+		using BallPtr = std::shared_ptr<Ball>;
+
+		BallPtr make_ball( );
 	}
 }

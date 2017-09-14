@@ -121,9 +121,11 @@
   <ItemGroup>
     <ClCompile Include="include\UI\StackMenu.hh" />
     <ClCompile Include="src\Animation.cc" />
-    <ClCompile Include="src\Blocks\Block.cpp" />
+    <ClCompile Include="src\Objects\Block.cpp" />
     <ClCompile Include="src\Collision.cc" />
     <ClCompile Include="src\Entities\Ball.cc" />
+    <ClCompile Include="src\Entities\Player.cc" />
+    <ClCompile Include="src\Entity.cc" />
     <ClCompile Include="src\FPSCounter.cc" />
     <ClCompile Include="src\Game.cc" />
     <ClCompile Include="src\main.cc" />
@@ -140,7 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
-    <ClInclude Include="include\Blocks\Block.hh" />
+    <ClInclude Include="include\Objects\Block.hh" />
     <ClInclude Include="include\BounceBall.hh" />
     <ClInclude Include="include\Entities\Player.hh" />
     <ClInclude Include="include\Manager\GameFileManager.hh" />
@@ -148,7 +150,7 @@
     <ClInclude Include="include\Map\MapFile.hh" />
     <ClInclude Include="include\Object.hh" />
     <ClInclude Include="include\Collision.hh" />
-    <ClInclude Include="include\EntityBase.hh" />
+    <ClInclude Include="include\Entity.hh" />
     <ClInclude Include="include\Entities\Ball.hh" />
     <ClInclude Include="include\FPSCounter.hh" />
     <ClInclude Include="include\Game.hh" />
@@ -156,6 +158,7 @@
     <ClInclude Include="include\Map.hh" />
     <ClInclude Include="include\NonCopyable.hh" />
     <ClInclude Include="include\NonMovable.hh" />
+    <ClInclude Include="include\ParseBase.hh" />
     <ClInclude Include="include\StateBase.hh" />
     <ClInclude Include="include\States\MainState.hh" />
     <ClInclude Include="include\States\PlayingState.hh" />
