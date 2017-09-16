@@ -5,17 +5,51 @@
 
 namespace BounceBall
 {
-	namespace Entity
+	namespace Entities
 	{
 		class Player : public Entity
 		{
 		public:
+			enum class TokenType
+			{
+				velocity,
+				key_type
+			};
+			#define map( type ) std::make_pair( #type, type )
+			std::map<std::string, TokenType> tokens_map
+			{
+				map( TokenType::velocity ),
+				map( TokenType::key_type )
+			};
+			#undef map
+
+		public:
+			enum class EnvironValueType
+			{
+
+			};
+
+			#define map( str, type ) std::make_pair( str, type )
+			std::map<std::string, EnvironValueType> environ_values
+			{
+
+			};
+			#undef map
+
+		public:
 			enum class MoveKeyType
 			{
-				wasd,
-				updownleftright
+				TYPE__1,
+				TYPE__2
 			};
-			using keys = std::vector<MoveKeyType>;
+
+			#define key( str, type ) std::make_pair( str, type )
+			std::map<std::string, MoveKeyType> key_map
+			{
+				key( "type1", MoveKeyType::TYPE__1 ),
+				key( "type2", MoveKeyType::TYPE__2 )
+			};
+			#undef key
 
 		public:
 			enum class MoveDirectionType
@@ -26,6 +60,18 @@ namespace BounceBall
 				left,
 				right
 			};
+
+			#define map( type, velocity ) std::make_pair( type, velocity )
+			std::map<MoveDirectionType, float> move_map
+			{
+				map( MoveDirectionType::up, 10.0f ),
+				map( MoveDirectionType::down, -10.0f ),
+
+				map( MoveDirectionType::left, -10.0f ),
+				map( MoveDirectionType::right, 10.0f ),
+			};
+			#undef map
+
 			using moves = std::vector<MoveDirectionType>;
 
 		public:
@@ -39,7 +85,6 @@ namespace BounceBall
 			virtual void render( StateBase*& handle ) override;
 
 		public:
-			virtual const Version recommend_parse_version( ) const override;
 			virtual std::string& replace_token( std::string& line ) override;
 
 		public:

@@ -117,6 +117,12 @@
     <ClCompile Include="src\Objects\Block.cpp">
       <Filter>소스 파일\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParseBase.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.hh">

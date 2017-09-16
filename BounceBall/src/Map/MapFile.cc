@@ -1,7 +1,7 @@
 #include "Map/MapFile.hh"
 
 #include "Entities/Ball.hh"
-#include "Blocks/Block.hh"
+#include "Objects/Block.hh"
 #include "Manager/GameFileManager.hh"
 
 namespace BounceBall

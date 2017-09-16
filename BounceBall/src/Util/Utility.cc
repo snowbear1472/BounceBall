@@ -215,55 +215,95 @@ namespace BounceBall
 	}
 
 
-	csv_map parse_csv( const string_lines* file, std::size_t& index )
+	csv_map parse_csv( const string_lines* file )
 	{
 		csv_map buffer;
-		std::vector<std::string> vbuffer;
-
-		auto& lines = *file;
+		std::string sbuffer = "";
 
 
-		for ( ; index < lines.size( ); index++ )
+		for ( auto& i : *file )
 		{
-			for ( int i = 0; i < lines[index].length( ); i++ )
+			for ( int j = 0; j < i.size( ); j++ )
 			{
-				auto& line = lines[index];
-				auto& c = line[i];
+				auto& c = i[j];
 
-
-				if ( std::isalpha( c ) || std::isdigit( c ) )
-					vbuffer.push_back( read_buffer( line, i ) );
+				if ( std::isalpha( c ) )
+				{
+					if ( sbuffer.empty( ) )
+					{
+						sbuffer = read_buffer( i, j );
+					}
+					else
+					{
+						buffer[sbuffer].push_back( read_buffer( i, j ) );
+					}
+				}
 				else if ( c == '(' )
-					vbuffer.push_back( read_buffer_paren( line, i ) );
+				{
+					if ( sbuffer.empty( ) )
+					{
+						sbuffer = read_buffer_paren( i, j );
+					}
+					else
+					{
+						buffer[sbuffer].push_back( read_buffer_paren( i, j ) );
+					}
+				}
+				else if ( c == '"' )
+				{
+					if ( sbuffer.empty( ) )
+					{
+						sbuffer = read_buffer( i, j, '"' );
+					}
+					else
+					{
+						buffer[sbuffer].push_back( read_buffer( i, j, '"' ) );
+					}
+				}
 			}
+
+			sbuffer = "";
 		}
 
 
 		return buffer;
-	}
-	const std::string* csv_find( const csv_map* csv, const std::string& name )
-	{
-		auto& v = *csv;
-
-		for ( int i = 0; i < v.size( ); i++ )
-			for ( int j = 0; j < v[i].size( ); j++ )
-				if ( v[i][j] == name )
-					return &v[i][j];
-
-
-		return nullptr;
 	}
 }
 
 
 namespace BounceBall
 {
-	string_lines read_file( const std::string& path )
+	bool file_exist( path& file )
+	{
+		std::ifstream infile( file );
+		return infile.good( );
+	}
+	std::string get_extension( path& file )
+	{
+		std::string buffer = "";
+
+
+		for ( int i = file.length( ) - 1; i <= 0; i++ )
+		{
+			if ( file[i] == '.' )
+			{
+				return buffer;
+			}
+			else
+			{
+				buffer += file[i];
+			}
+		}
+
+
+		return "";
+	}
+	string_lines read_file( path& file )
 	{
 		string_lines buffer;
 		std::string line = "";
 
-		std::ifstream stream( path );
+		std::ifstream stream( file );
 
 
 		if ( stream.is_open( ) )
@@ -273,6 +313,51 @@ namespace BounceBall
 
 			line = "";
 		}
+
+
+		return buffer;
+	}
+}
+
+
+namespace BounceBall
+{
+	sf::Color parse_color( const std::string& line )
+	{
+		sf::Color buffer;
+		std::vector<std::string> vbuffer;
+		std::string sbuffer = "";
+
+
+		for ( auto& i : line )
+		{
+			if ( i == '(' || i == ')' )
+			{
+				continue;
+			}
+
+			if ( i == ',' || i == ' ' )
+			{
+				if ( sbuffer.empty( ) )
+				{
+					continue;
+				}
+				else
+				{
+					vbuffer.push_back( sbuffer );
+					sbuffer = "";
+				}
+			}
+			else
+			{
+				sbuffer += i;
+			}
+		}
+
+		buffer.r = std::stoi( vbuffer.at( 0 ) );
+		buffer.g = std::stoi( vbuffer.at( 1 ) );
+		buffer.b = std::stoi( vbuffer.at( 2 ) );
+		buffer.a = std::stoi( vbuffer.at( 3 ) );
 
 
 		return buffer;

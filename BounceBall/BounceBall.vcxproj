@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="include\UI\StackMenu.hh" />
     <ClCompile Include="src\Animation.cc" />
+    <ClCompile Include="src\Object.cc" />
     <ClCompile Include="src\Objects\Block.cpp" />
     <ClCompile Include="src\Collision.cc" />
     <ClCompile Include="src\Entities\Ball.cc" />
@@ -133,6 +134,7 @@
     <ClCompile Include="src\Manager\ResourceHolder.cc" />
     <ClCompile Include="src\Map.cc" />
     <ClCompile Include="src\Map\MapFile.cc" />
+    <ClCompile Include="src\ParseBase.cc" />
     <ClCompile Include="src\States\MainState.cc" />
     <ClCompile Include="src\UI\Button.cc" />
     <ClCompile Include="src\UI\StackMenu.cc" />

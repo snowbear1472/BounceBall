@@ -5,7 +5,7 @@
 #include <map>
 
 #include "Object.hh"
-#include "EntityBase.hh"
+#include "Entity.hh"
 #include "Util/Utility.hh"
 
 
@@ -99,9 +99,8 @@ namespace BounceBall
 		sf::Vector2f map_size_;
 
 	public:
-
 		std::map<sf::Vector2f, Object*> objects_;
-		std::map<sf::Vector2f, EntityBase*> entities_;
+		std::map<sf::Vector2f, Entity*> entities_;
 
 	private:
 		csv_map* default_map_;

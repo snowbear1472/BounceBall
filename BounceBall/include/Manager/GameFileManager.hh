@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Util/Utility.hh"
-#include "EntityBase.hh"
+#include "Entity.hh"
 #include "Object.hh"
 
 
@@ -26,7 +26,7 @@ namespace BounceBall
 
 		public:
 			csv_map get( const std::string& name, const Type& type );
-			EntityBase* get_entity( const std::string& name );
+			Entity* get_entity( const std::string& name );
 			Object* get_object( const std::string& name );
 
 		private:

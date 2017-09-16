@@ -70,7 +70,7 @@ namespace BounceBall
 // csv parser for mapfile class and others
 namespace BounceBall
 {
-	using csv_map = std::vector<std::vector<std::string>>;
+	using csv_map = std::map<std::string, std::vector<std::string>>;
 	using string_lines = std::vector<std::string>;
 
 
@@ -82,12 +82,19 @@ namespace BounceBall
 	std::string read_buffer( const std::string& line, int& index, char con );
 	std::string read_buffer_paren( const std::string& line, int& index );
 
-	csv_map parse_csv( const string_lines* file, std::size_t& index );
-	const std::string* csv_find( const csv_map* csv, const std::string& name );
+	csv_map parse_csv( const string_lines* file );
 }
 
 
 namespace BounceBall
 {
-	string_lines read_file( const std::string& path );
+	bool file_exist( path& file );
+	std::string get_extension( path& file );
+
+	string_lines read_file( path& file );
+}
+
+namespace BounceBall
+{
+	sf::Color parse_color( const std::string& line );
 }

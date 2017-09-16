@@ -8,6 +8,16 @@ namespace BounceBall
 	class ParseBase
 	{
 	public:
+		struct MetaData
+		{
+			std::string data_type_;
+			Version parse_version_;
+			std::string name_;
+			std::string developer_;
+			std::string details_;
+		};
+
+	public:
 		enum class TokenTypeBase
 		{
 			file_type,
@@ -24,22 +34,22 @@ namespace BounceBall
 			map( TokenTypeBase::file_type ),
 			map( TokenTypeBase::data_type ),
 			map( TokenTypeBase::parse_version ),
-			map( TokenTypeBase::file_type ),
-			map( TokenTypeBase::file_type ),
-			map( TokenTypeBase::file_type ),
+			map( TokenTypeBase::name ),
+			map( TokenTypeBase::developer ),
+			map( TokenTypeBase::details ),
 		};
 		#undef map
 
 	public:
 		enum class EnvironValueTypeBase
 		{
-			DEFAULT__PARSE_VERSION
+			TYPE__FILE
 		};
 
 		#define map( type, str ) std::make_pair( type, str )
 		std::map<EnvironValueTypeBase, std::string> base_environ_values_map
 		{
-			map( EnvironValueTypeBase::DEFAULT__PARSE_VERSION, recommend_parse_version( ).to_string( ) )
+			map( EnvironValueTypeBase::TYPE__FILE, "bounceball_script" )
 		};
 		#undef msg
 
@@ -48,9 +58,6 @@ namespace BounceBall
 		{
 			NOT_FOUND__FILE,
 			UNKWON__FILE,
-
-			NOT_FOUND__SCRIPT,
-			UNKWON__SCRIPT,
 
 			NOT_FOUND__META_DATA,
 			UNKWON__META_DATA,
@@ -61,9 +68,6 @@ namespace BounceBall
 		{
 			msg( ErrorTypeBase::NOT_FOUND__FILE, "not_found!: file not found." ),
 			msg( ErrorTypeBase::UNKWON__FILE, "unkwon!: unkwon file." ),
-
-			msg( ErrorTypeBase::NOT_FOUND__SCRIPT, "not_found!: script not found." ),
-			msg( ErrorTypeBase::UNKWON__SCRIPT, "unkwon!: unkwon script." ),
 
 			msg( ErrorTypeBase::NOT_FOUND__META_DATA, "not_found!: meta_data not found." ),
 			msg( ErrorTypeBase::UNKWON__META_DATA, "unkwon!: unkwon meta_data." ),
@@ -78,8 +82,14 @@ namespace BounceBall
 		virtual std::string& replace_token( std::string& line ) = 0;
 
 	public:
-		virtual void parse( path& file ) = 0;
-		virtual void parse( const string_lines* lines ) = 0;
-		virtual void parse( const csv_map* csv ) = 0;
+		virtual void parse( path& file );
+		virtual void parse( const string_lines* lines );
+		virtual void parse( const csv_map* csv );
+
+	public:
+		MetaData meta_data_;
+
+	protected:
+		csv_map data_;
 	};
 }

@@ -7,10 +7,49 @@
 
 namespace BounceBall
 {
-	namespace Entity
+	namespace Entities
 	{
 		class Ball : public Player
 		{
+		public:
+			enum class TokenType
+			{
+				radius
+			};
+			#define map( type ) std::make_pair( #type, type )
+			std::map<std::string, TokenType> tokens_map
+			{
+				map( TokenType::radius )
+			};
+			#undef map
+
+		public:
+			enum class EnvironValueType
+			{
+
+			};
+
+			#define map( str, type ) std::make_pair( str, type )
+			std::map<std::string, EnvironValueType> environ_values
+			{
+
+			};
+			#undef map
+
+		public:
+			enum class StateType
+			{
+				Jumping,
+				Stand
+			};
+
+		public:
+			enum class JumpType
+			{
+				Rising,
+				Falling
+			};
+
 		public:
 			Ball( ) = default;
 
@@ -35,21 +74,21 @@ namespace BounceBall
 			virtual void reset( ) override;
 
 		public:
-			virtual moves get_directions( ) const override;
+			//virtual moves get_directions( ) const override;
 
 		public:
 			virtual void move( const moves& direction ) override;
 			void jump( );
 
 		public:
-			float jump_limit_;
-			float jump_save_;
+			float jump_;
 			float radius_;
 
-		private:
-			csv_map* default_ball_;
+		public:
+			StateType state_;
+			JumpType jump_state_;
 		};
-		
+
 
 		using BallPtr = std::shared_ptr<Ball>;
 

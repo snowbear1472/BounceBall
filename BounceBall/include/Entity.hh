@@ -18,43 +18,49 @@ namespace BounceBall
 		enum class TokenType
 		{
 			entity_name,
+			size,
 			color,
 			texture,
-			animation
+			animation,
+			frame
 		};
 		#define map( type ) std::make_pair( #type, type )
 		std::map<std::string, TokenType> tokens_map
 		{
 			map( TokenType::entity_name ),
+			map( TokenType::size ),
 			map( TokenType::color ),
 			map( TokenType::texture ),
 			map( TokenType::animation ),
+			map( TokenType::frame )
 		};
 		#undef map
 
 	public:
 		enum class EnvironValueType
 		{
-			ID
+			TYPE__DATA
 		};
 
-		#define map( str, type ) std::make_pair( str, type )
-		std::map<std::string, EnvironValueType> environ_values_
+		#define map( type, str ) std::make_pair( type, str )
+		std::map<EnvironValueType, std::string> environ_values
 		{
-			map( "game:entity", EnvironValueType::ID )
+			map(EnvironValueType::TYPE__DATA, "bounceball:entity" )
 		};
 		#undef map
 
 	public:
 		enum class ErrorType
 		{
-
+			NOT_FOUND__SCRIPT,
+			UNKWON__SCRIPT,
 		};
 
 		#define msg( type, str ) std::make_pair( type, str )
 		std::map<ErrorType, std::string> error_messages
 		{
-
+			msg( ErrorType::NOT_FOUND__SCRIPT, "not_found!: script not found." ),
+			msg( ErrorType::UNKWON__SCRIPT, "unkwon!: unkwon script." ),
 		};
 		#undef msg
 
@@ -78,6 +84,7 @@ namespace BounceBall
 
 	public:
 		virtual void init( ) = 0;
+		virtual void reset( ) = 0;
 
 	public:
 		std::string entity_name_;

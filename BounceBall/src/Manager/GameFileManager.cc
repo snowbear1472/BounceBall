@@ -2,7 +2,7 @@
 
 #include "Manager/GameFileManager.hh"
 #include "Entities/Ball.hh"
-#include "Blocks/Block.hh"
+#include "Objects/Block.hh"
 
 
 namespace BounceBall

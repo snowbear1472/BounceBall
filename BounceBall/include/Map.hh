@@ -7,7 +7,7 @@
 #include <string>
 #include <cctype>
 
-#include "EntityBase.hh"
+#include "Entity.hh"
 #include "Object.hh"
 #include "Map/MapFile.hh"
 
