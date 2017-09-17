@@ -11,8 +11,13 @@ namespace BounceBall
 	{
 		class GameFileManager final
 		{
-		public:
+		private:
+			GameFileManager( ) = default;
+		private:
+			~GameFileManager( );
 
+		public:
+			static GameFileManager& get( );
 		};
 	}
 }
