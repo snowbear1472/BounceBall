@@ -2,7 +2,7 @@
 bounceball sfml version.
 
 ## developer
-snowbear1472 (snowbear1472@gmail.com)
+- snowbear1472 (snowbear1472@gmail.com)
 
 ## game structure
 client doesn't create directories automatically
