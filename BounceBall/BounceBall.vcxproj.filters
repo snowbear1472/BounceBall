@@ -43,12 +43,6 @@
     <Filter Include="헤더 파일\Entities">
       <UniqueIdentifier>{bb6ddd26-f6eb-4a18-b696-0e7d36828ba6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Map">
-      <UniqueIdentifier>{63a8f622-65f5-47f3-b924-0684e5486dfd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Map">
-      <UniqueIdentifier>{49a07ebd-16f3-4e7c-8171-874d7e8cb19a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Objects">
       <UniqueIdentifier>{8129dcc4-f38d-4315-9374-71211169cde4}</UniqueIdentifier>
     </Filter>
@@ -99,9 +93,6 @@
     <ClCompile Include="src\Map.cc">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\MapFile.cc">
-      <Filter>소스 파일\Map</Filter>
-    </ClCompile>
     <ClCompile Include="src\Util\Utility.cc">
       <Filter>소스 파일\Util</Filter>
     </ClCompile>
@@ -121,6 +112,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="src\Object.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MapFile.cc">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -182,14 +176,8 @@
     <ClInclude Include="include\Object.hh">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Map\MapFile.hh">
-      <Filter>헤더 파일\Map</Filter>
-    </ClInclude>
     <ClInclude Include="include\Manager\ResourceHolder.hh">
       <Filter>헤더 파일\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\BounceBall.hh">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\Manager\GameFileManager.hh">
       <Filter>헤더 파일\Managers</Filter>
@@ -205,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="include\Objects\Block.hh">
       <Filter>헤더 파일\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MapFile.hh">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Environ.hh">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

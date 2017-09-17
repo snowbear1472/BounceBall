@@ -58,7 +58,7 @@ namespace BounceBall
 					case BounceBall::Entities::Player::TokenType::velocity:
 						if ( i.second.at( 0 ).empty( ) )
 						{
-							throw std::runtime_error( Entity::error_messages[Entity::ErrorType::UNKWON__SCRIPT] );
+							throw std::runtime_error( Entity::error_messages_map[Entity::ErrorType::UNKWON__SCRIPT] );
 						}
 						else
 						{
@@ -69,7 +69,7 @@ namespace BounceBall
 					case BounceBall::Entities::Player::TokenType::key_type:
 						if ( i.second.at( 0 ).empty( ) )
 						{
-							throw std::runtime_error( Entity::error_messages[Entity::ErrorType::UNKWON__SCRIPT] );
+							throw std::runtime_error( Entity::error_messages_map[Entity::ErrorType::UNKWON__SCRIPT] );
 						}
 						else
 						{
@@ -79,13 +79,13 @@ namespace BounceBall
 							}
 							catch ( const std::exception& )
 							{
-								throw std::runtime_error( Entity::error_messages[Entity::ErrorType::UNKWON__SCRIPT] );
+								throw std::runtime_error( Entity::error_messages_map[Entity::ErrorType::UNKWON__SCRIPT] );
 							}
 						}
 						break;
 
 					default:
-						throw std::runtime_error( Entity::error_messages[Entity::ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( Entity::error_messages_map[Entity::ErrorType::UNKWON__SCRIPT] );
 					}
 
 					if ( !read )
@@ -95,7 +95,7 @@ namespace BounceBall
 
 			if ( !read )
 			{
-				throw std::runtime_error( base_error_messages[ErrorTypeBase::NOT_FOUND__META_DATA] );
+				throw std::runtime_error( base_error_messages_map[ErrorTypeBase::NOT_FOUND__META_DATA] );
 			}
 		}
 

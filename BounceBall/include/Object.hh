@@ -38,7 +38,7 @@ namespace BounceBall
 		};
 
 		#define map( type, str ) std::make_pair( type, str )
-		std::map<EnvironValueType, std::string> environ_values
+		std::map<EnvironValueType, std::string> environ_values_map
 		{
 			map( EnvironValueType::TYPE__DATA, "bounceball:entity" )
 		};
@@ -52,7 +52,7 @@ namespace BounceBall
 		};
 
 		#define msg( type, str ) std::make_pair( type, str )
-		std::map<ErrorType, std::string> error_messages
+		std::map<ErrorType, std::string> error_messages_map
 		{
 			msg( ErrorType::NOT_FOUND__SCRIPT, "not_found!: script not found." ),
 			msg( ErrorType::UNKWON__SCRIPT, "unkwon!: unkwon script." ),

@@ -30,14 +30,14 @@ namespace BounceBall
 				case BounceBall::ParseBase::TokenTypeBase::file_type:
 					if ( i.second.at( 0 ) != base_environ_values_map[EnvironValueTypeBase::TYPE__FILE] )
 					{
-						throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__FILE] );
+						throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__FILE] );
 					}
 					break;
 
 				case BounceBall::ParseBase::TokenTypeBase::data_type:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+						throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 					}
 					else
 					{
@@ -48,7 +48,7 @@ namespace BounceBall
 				case BounceBall::ParseBase::TokenTypeBase::parse_version:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+						throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 					}
 					else
 					{
@@ -58,7 +58,7 @@ namespace BounceBall
 						}
 						catch ( const std::exception& )
 						{
-							throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+							throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 						}
 					}
 					break;
@@ -66,7 +66,7 @@ namespace BounceBall
 				case BounceBall::ParseBase::TokenTypeBase::name:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+						throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 					}
 					else
 					{
@@ -77,7 +77,7 @@ namespace BounceBall
 				case BounceBall::ParseBase::TokenTypeBase::developer:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+						throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 					}
 					else
 					{
@@ -88,7 +88,7 @@ namespace BounceBall
 				case BounceBall::ParseBase::TokenTypeBase::details:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+						throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 					}
 					else
 					{
@@ -97,7 +97,7 @@ namespace BounceBall
 					break;
 
 				default:
-					throw std::runtime_error( base_error_messages[ErrorTypeBase::UNKWON__META_DATA] );
+					throw std::runtime_error( base_error_messages_map[ErrorTypeBase::UNKWON__META_DATA] );
 				}
 
 				if ( !read )
@@ -107,7 +107,7 @@ namespace BounceBall
 
 		if ( !read )
 		{
-			throw std::runtime_error( base_error_messages[ErrorTypeBase::NOT_FOUND__META_DATA] );
+			throw std::runtime_error( base_error_messages_map[ErrorTypeBase::NOT_FOUND__META_DATA] );
 		}
 	}
 }

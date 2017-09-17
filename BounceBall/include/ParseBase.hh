@@ -64,7 +64,7 @@ namespace BounceBall
 		};
 
 		#define msg( type, str ) std::make_pair( type, str )
-		std::map<ErrorTypeBase, std::string> base_error_messages
+		std::map<ErrorTypeBase, std::string> base_error_messages_map
 		{
 			msg( ErrorTypeBase::NOT_FOUND__FILE, "not_found!: file not found." ),
 			msg( ErrorTypeBase::UNKWON__FILE, "unkwon!: unkwon file." ),

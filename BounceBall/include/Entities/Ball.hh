@@ -30,7 +30,7 @@ namespace BounceBall
 			};
 
 			#define map( str, type ) std::make_pair( str, type )
-			std::map<std::string, EnvironValueType> environ_values
+			std::map<std::string, EnvironValueType> environ_values_map
 			{
 
 			};

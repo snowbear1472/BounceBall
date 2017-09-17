@@ -8,7 +8,6 @@
 
 int main( )
 {
-	auto obj = BounceBall::Manager::GameFileManager::get( ).get_entity( "default_ball" );
 
 
 	return 0;

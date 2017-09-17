@@ -64,7 +64,7 @@ namespace BounceBall
 					case BounceBall::Entities::Ball::TokenType::radius:
 						if ( i.second.at( 0 ).empty( ) )
 						{
-							throw std::runtime_error( Entity::error_messages[Entity::ErrorType::UNKWON__SCRIPT] );
+							throw std::runtime_error( Entity::error_messages_map[Entity::ErrorType::UNKWON__SCRIPT] );
 						}
 						else
 						{

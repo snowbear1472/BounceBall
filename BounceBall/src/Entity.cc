@@ -25,8 +25,8 @@ namespace BounceBall
 		bool read = false;
 
 
-		if ( meta_data_.data_type_ != environ_values[EnvironValueType::TYPE__DATA] )
-			throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+		if ( meta_data_.data_type_ != environ_values_map[EnvironValueType::TYPE__DATA] )
+			throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 
 
 		for ( auto& i : data_ )
@@ -38,7 +38,7 @@ namespace BounceBall
 				case BounceBall::Entity::TokenType::entity_name:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 					}
 					else
 					{
@@ -49,7 +49,7 @@ namespace BounceBall
 				case BounceBall::Entity::TokenType::size:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 					}
 					else
 					{
@@ -63,7 +63,7 @@ namespace BounceBall
 				case BounceBall::Entity::TokenType::color:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 					}
 					else
 					{
@@ -73,7 +73,7 @@ namespace BounceBall
 						}
 						catch ( const std::exception& )
 						{
-							throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+							throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 						}
 					}
 					break;
@@ -81,7 +81,7 @@ namespace BounceBall
 				case BounceBall::Entity::TokenType::texture:
 					if ( i.second.at( 0 ).empty( ) || i.second.at( 1 ).empty( ) || i.second.at( 2 ).empty( ) )
 					{
-						throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 					}
 					else
 					{
@@ -91,13 +91,13 @@ namespace BounceBall
 							shape_.setTexture( &texture_ );
 
 							auto& pos = to_vector2i( parse_vector2f( i.second.at( 1 ) ) );
-							auto& size = to_vector2i( parse_vector2f( i.second.at( 1 ) ) );
+							auto& size = to_vector2i( parse_vector2f( i.second.at( 2 ) ) );
 
 							shape_.setTextureRect( { pos, size } );
 						}
 						catch ( const std::exception& )
 						{
-							throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+							throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 						}
 					}
 					break;
@@ -105,7 +105,7 @@ namespace BounceBall
 				case BounceBall::Entity::TokenType::animation:
 					if ( i.second.at( 0 ).empty( ) )
 					{
-						throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 					}
 					else
 					{
@@ -116,7 +116,7 @@ namespace BounceBall
 				case BounceBall::Entity::TokenType::frame:
 					if ( i.second.size( ) <= 0 )
 					{
-						throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 					}
 					else
 					{
@@ -129,13 +129,13 @@ namespace BounceBall
 						}
 						catch ( const std::exception& )
 						{
-							throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+							throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 						}
 					}
 					break;
 
 				default:
-					throw std::runtime_error( error_messages[ErrorType::UNKWON__SCRIPT] );
+					throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 				}
 
 				if ( !read )
@@ -145,7 +145,7 @@ namespace BounceBall
 
 		if ( !read )
 		{
-			throw std::runtime_error( error_messages[ErrorType::NOT_FOUND__SCRIPT] );
+			throw std::runtime_error( error_messages_map[ErrorType::NOT_FOUND__SCRIPT] );
 		}
 	}
 }
