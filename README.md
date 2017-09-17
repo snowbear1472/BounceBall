@@ -17,5 +17,5 @@ client doesn't create directories automatically
 ## script type
 all of bounceball's script type is csv.
 
-# about
+## about
 this project is test-type. real game is upcomming soon :D
