@@ -4,15 +4,16 @@ bounceball sfml version.
 ## developer
 - snowbear1472 (snowbear1472@gmail.com)
 
-## game structure
+## resource
 client doesn't create directories automatically
 
-- root: based game directory
-- root/res: resource directory
-- root/res/entity: a directory which is store entity scripts.
-- root/res/object: a directory which is store object scripts.
-- root/res/font: a directory which is store font files.
-- root/res/map: a directory which is store map datas.
+### structure
+- <code>root</code>: based game directory
+- <code>root/res</code>: resource directory
+- <code>root/res/entity</code>: a directory which is store entity scripts.
+- <code>root/res/object</code>: a directory which is store object scripts.
+- <code>root/res/font</code>: a directory which is store font files.
+- <code>root/res/map</code>: a directory which is store map datas.
 
 ## script
 all of bounceball's script type is csv.
@@ -41,19 +42,20 @@ details, default ball</code></pre>
 
 #### bounceball:entity
 + entity_name: name of entity.
-  + usage: entity_name, {name}
+  + usage: <code>entity_name, {name}</code>
 + size: size of entity.
-  + usage: size, ({width}, {height})
+  + usage: <code>size, ({width}, {height})</code>
 + color: color of entity.
-  + usage: color, ({r}, {g}, {b}, {a})
+  + usage: <code>color, ({r}, {g}, {b}, {a})</code>
 + texture: texuture of entity.
-  + usage: texture, "{file_name}", ({x}, {y}), ({width}, {height})
+  + usage: <code>texture, "{file_name}", ({x}, {y}), ({width}, {height})</code>
     + file_name: client find file automatically. don't write full path. the resource should be in res directory.
 + animation: animation of entity.
-  + usage: animation, {frame_size}
+  + usage: <code>animation, {frame_size}</code>
 + frame: frame of entity's animation.
-  + usage: frame, {second}, {second}, ...
-  
+  + usage: <code>frame, {second}, {second}, ...</code>
+
+###### example code
 <pre><code>entity_name, ball
 size, (30, 30)
 color, (255, 255, 255, 255)
@@ -63,15 +65,16 @@ frame, 0.45, 0.34, 0.13</code></pre>
 
 #### bounceball:object
 + object_name: name of object.
-  + usage: object_name, {name}
+  + usage: <code>object_name, {name}</code>
 + size: size of object.
-  + usage: size, ({width}, {height})
+  + usage: <code>size, ({width}, {height})</code>
 + color: color of object.
-  + usage: color, ({r}, {g}, {b}, {a})
+  + usage: <code>color, ({r}, {g}, {b}, {a})</code>
 + texture: texture of object.
-  + usage: texture, "{file_name}", ({x}, {y}), ({width}, {height})
+  + usage: <code>texture, "{file_name}", ({x}, {y}), ({width}, {height})</code>
     + file_name: client find file automatically. don't write full path. the resource should be in res directory.
 
+###### example code
 <pre><code>object_name, grass
 size, (50, 50)
 color, (255, 255, 255, 255)
