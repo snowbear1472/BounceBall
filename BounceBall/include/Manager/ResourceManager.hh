@@ -9,7 +9,7 @@ namespace BounceBall
 	namespace Manager
 	{
 		template <typename Ty_>
-		class ResourceManager
+		class ResourceManager final
 		{
 		public:
 			ResourceManager( const std::string& folder, const std::string& extension )

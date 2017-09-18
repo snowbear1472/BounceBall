@@ -26,7 +26,7 @@ namespace BounceBall
 		{
 			return Version( 1, 0, 0, 0 );
 		}
-		std::string& replace_token( std::string& line )
+		std::string& Block::replace_token( std::string& line )
 		{
 			return line;
 		}

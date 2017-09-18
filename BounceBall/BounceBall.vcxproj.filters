@@ -179,9 +179,6 @@
     <ClInclude Include="include\Manager\ResourceHolder.hh">
       <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="include\Manager\GameFileManager.hh">
-      <Filter>헤더 파일\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="include\Entities\Player.hh">
       <Filter>헤더 파일\Entities</Filter>
     </ClInclude>
@@ -199,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="include\Environ.hh">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Manager\GameFileManager.hh">
+      <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

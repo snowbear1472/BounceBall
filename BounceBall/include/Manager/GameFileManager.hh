@@ -1,23 +1,43 @@
 #pragma once
 
+#include <map>
+
 #include "Util/Utility.hh"
-#include "Entity.hh"
-#include "Object.hh"
 
 
 namespace BounceBall
 {
 	namespace Manager
 	{
-		class GameFileManager final
+		struct GameFile
+		{
+			enum class Type
+			{
+				None,
+				Object,
+				Entity,
+				Map
+			};
+
+			std::string path;
+			Type type;
+			csv_map csv;
+		};
+
+		class GameFileManager
 		{
 		private:
 			GameFileManager( ) = default;
-		private:
-			~GameFileManager( );
 
 		public:
 			static GameFileManager& get( );
+
+		public:
+			GameFile& get( path& file );
+			void add( path& file );
+
+		public:
+			std::vector<GameFile> res;
 		};
 	}
 }

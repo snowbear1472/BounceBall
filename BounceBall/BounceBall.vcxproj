@@ -144,10 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.hh" />
+    <ClInclude Include="include\Manager\GameFileManager.hh" />
     <ClInclude Include="include\Objects\Block.hh" />
     <ClInclude Include="include\Environ.hh" />
     <ClInclude Include="include\Entities\Player.hh" />
-    <ClInclude Include="include\Manager\GameFileManager.hh" />
     <ClInclude Include="include\Manager\ResourceHolder.hh" />
     <ClInclude Include="include\MapFile.hh" />
     <ClInclude Include="include\Object.hh" />

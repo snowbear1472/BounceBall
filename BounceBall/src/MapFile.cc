@@ -1,15 +1,18 @@
 #include "MapFile.hh"
 
+#include "Manager/GameFileManager.hh"
+
+#include "Entities/Player.hh"
+#include "Entities/Ball.hh"
+
+#include "Objects/Block.hh"
+
 
 namespace BounceBall
 {
 	MapFile::~MapFile( )
 	{
-		for ( auto o : objects_ )
-			delete o.second;
 
-		for ( auto e : entities_ )
-			delete e.second;
 	}
 
 
@@ -53,6 +56,10 @@ namespace BounceBall
 	void MapFile::parse_ver_1_0_0_0( const csv_map* csv )
 	{
 		bool read = false;
+
+
+		if ( meta_data_.data_type_ != environ_values_map[EnvironValueType::TYPE__DATA] )
+			throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
 
 
 		for ( auto& i : *csv )
@@ -136,6 +143,125 @@ namespace BounceBall
 					break;
 
 				case BounceBall::MapFile::TokenType::add:
+					if ( i.second.at( 0 ).empty( ) || i.second.at( 1 ).empty( ) )
+					{
+						throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
+					}
+					else
+					{
+						try
+						{
+							auto& file = Manager::GameFileManager::get( ).get( i.second.at( 0 ) );
+
+
+							if ( file.csv.find( "data_type" ) == file.csv.end( ) )
+							{
+								throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
+							}
+							if ( file.csv.find( "name" ) == file.csv.end( ) )
+							{
+								throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
+							}
+
+
+							auto& data_type = file.csv.at( "data_type" ).at( 0 );
+							auto& name = file.csv.at( "name" ).at( 0 );
+
+
+							switch ( file.type )
+							{
+							case Manager::GameFile::Type::Entity:
+							{
+								std::shared_ptr<Entity> entity;
+
+
+								if ( data_type == "bounceball:entity" )
+								{
+									if ( name == "default_ball" )
+									{
+										auto ball = std::make_shared<Entities::Ball>( );
+										ball->parse( &Manager::GameFileManager::get( ).get( name ).csv );
+
+										entity.reset( ball.get( ) );
+									}
+									else
+									{
+										/*auto player = std::make_shared<Entities::Player>( );
+										player->parse( &Manager::GameFileManager::get( ).get( name ).csv );
+
+										entity.reset( player.get( ) );*/
+									}
+								}
+								else
+								{
+									throw std::runtime_error( error_messages_map[ErrorType::UNKWON__ID] );
+								}
+
+
+
+								if ( entity )
+								{
+									entities_.push_back( entity );
+								}
+								else
+								{
+									throw std::runtime_error( error_messages_map[ErrorType::FATAL_ERROR] );
+								}
+							}
+							break;
+
+							case Manager::GameFile::Type::Object:
+							{
+								std::shared_ptr<Object> object;
+
+
+								if ( data_type == "bounceball:object" )
+								{
+									if ( name == "default_grass" )
+									{
+										//TODO: grass
+									}
+									else
+									{
+										auto block = std::make_shared<Objects::Block>( );
+										block->parse( &Manager::GameFileManager::get( ).get( name ).csv );
+
+										object.reset( block.get( ) );
+									}
+								}
+								else
+								{
+									throw std::runtime_error( error_messages_map[ErrorType::UNKWON__ID] );
+								}
+
+
+
+								if ( object )
+								{
+									objects_.push_back( object );
+								}
+								else
+								{
+									throw std::runtime_error( error_messages_map[ErrorType::FATAL_ERROR] );
+								}
+							}
+							break;
+
+							case Manager::GameFile::Type::Map:
+								throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
+
+							case Manager::GameFile::Type::None:
+								throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
+
+							default:
+								throw std::runtime_error( error_messages_map[ErrorType::UNKWON__SCRIPT] );
+							}
+						}
+						catch ( const std::exception& )
+						{
+							throw std::runtime_error( error_messages_map[ErrorType::FATAL_ERROR] );
+						}
+					}
 					break;
 
 				default:

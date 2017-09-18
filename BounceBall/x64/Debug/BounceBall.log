@@ -3,5 +3,5 @@ c:\users\snowbear1472\documents\github\bounceball\bounceball\bin\sfml\include\sf
 c:\users\snowbear1472\documents\github\bounceball\bounceball\include\entity.hh(27): warning C4005: 'map': 매크로 재정의
   c:\users\snowbear1472\documents\github\bounceball\bounceball\include\parsebase.hh(49): note: 'map'의 이전 정의를 참조하십시오.
 x64\Debug\StackMenu.obj : warning LNK4042: 개체가 두 번 이상 지정되었습니다. 나머지는 무시됩니다.
-Block.obj : error LNK2001: "public: virtual class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > & __cdecl BounceBall::Objects::Block::replace_token(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &)" (?replace_token@Block@Objects@BounceBall@@UEAAAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z) 외부 기호를 확인할 수 없습니다.
-C:\Users\snowbear1472\Documents\github\BounceBall\BounceBall\x64\Debug\BounceBall.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
+  BounceBall.vcxproj -> C:\Users\snowbear1472\Documents\github\BounceBall\BounceBall\x64\Debug\BounceBall.exe
+  BounceBall.vcxproj -> C:\Users\snowbear1472\Documents\github\BounceBall\BounceBall\x64\Debug\BounceBall.pdb (Partial PDB)

@@ -21,7 +21,7 @@ namespace BounceBall
 			display_size,
 			background_color,
 			background_texture,
-			
+
 			add
 		};
 
@@ -57,6 +57,8 @@ namespace BounceBall
 
 			NOT_FOUND__ID,
 			UNKWON__ID,
+
+			FATAL_ERROR
 		};
 
 		#define msg(type, str) std::make_pair(type, str)
@@ -66,7 +68,9 @@ namespace BounceBall
 			msg( ErrorType::UNKWON__SCRIPT, "unkwon!: unkwon script." ),
 
 			msg( ErrorType::NOT_FOUND__ID, "not_found!: id not found." ),
-			msg( ErrorType::UNKWON__ID, "unkwon!: unkwon id." )
+			msg( ErrorType::UNKWON__ID, "unkwon!: unkwon id." ),
+
+			msg( ErrorType::FATAL_ERROR, "fatal_error!" )
 		};
 		#undef msg
 
@@ -113,8 +117,8 @@ namespace BounceBall
 		sf::IntRect background_texture_rect_;
 
 	public:
-		std::map<sf::Vector2f, Object*> objects_;
-		std::map<sf::Vector2f, Entity*> entities_;
+		std::vector<std::shared_ptr<Object>> objects_;
+		std::vector<std::shared_ptr<Entity>> entities_;
 	};
 
 
