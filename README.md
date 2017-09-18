@@ -19,7 +19,7 @@ all of bounceball's script type is csv.
 
 ### script meta data
 + file_type: should be "bounceball_script".
-  + usage: file_type, bounceball_script
+  + usage: <code>file_type, bounceball_script</code>
 + data_type: script data type.
   + usage: data_type, {value}
   + type of data
@@ -32,6 +32,7 @@ all of bounceball's script type is csv.
 + developer: developer of script.
 + details: details of script.
 
+###### example code
 <pre><code>file_type, bounceball_script
 data_type, bounceball:entity
 name, default_ball
