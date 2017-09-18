@@ -18,6 +18,21 @@ client doesn't create directories automatically
 ## script
 all of bounceball's script type is csv.
 
+###### example code
+<pre><code>file_type, bounceball_script
+data_type, bounceball:entity
+name, default_ball
+developer, snowbear1472
+details, default ball
+
+
+entity_name, ball
+size, (30, 30)
+color, (255, 255, 255, 255)
+texture, "ball.png", (0, 0), (30, 30)
+animation, 30
+frame, 0.45, 0.34, 0.13</code></pre>
+
 ### script meta data
 + file_type: should be "bounceball_script".
   + usage: <code>file_type, bounceball_script</code>
