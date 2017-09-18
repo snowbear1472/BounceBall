@@ -32,8 +32,7 @@ all of bounceball's script type is csv.
 - developer: developer of script
 - details: details of script
 
-<pre><code>
-file_type, bounceball_script
+<pre><code>file_type, bounceball_script
 data_type, bounceball:entity
 name, default_ball
 developer, snowbear1472
