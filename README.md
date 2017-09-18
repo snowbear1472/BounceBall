@@ -27,11 +27,14 @@ all of bounceball's script type is csv.
     + <code>bounceball:entity</code>
     + <code>bounceball:objcet</code>
 + name: name of script.
+  + usage: <code>name, {name}</code>
     + reserved words
       + <code>default_ball</code>
       + <code>default_grass</code>
 + developer: developer of script.
+  + usage: <code>developer, {developer}</code>
 + details: details of script.
+  + usage: <code>details, {details}</code>
 
 ###### example code
 <pre><code>file_type, bounceball_script
