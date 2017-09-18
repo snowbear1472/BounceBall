@@ -21,12 +21,12 @@ all of bounceball's script type is csv.
 + file_type: should be "bounceball_script"
   + usage: file_type, bounceball_script
 
-- data_type: script data type
-              * usage: data_type, {value}
-              * type of data
-                * bounceball:entity
-                * bounceball:objcet
-- name: name of script
++ data_type: script data type
+  + usage: data_type, {value}
+  + type of data
+    + bounceball:entity
+    + bounceball:objcet
++ name: name of script
               * reserved words
                 * default_ball
                 * default_grass
